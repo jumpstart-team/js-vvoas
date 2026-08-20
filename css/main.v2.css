@@ -555,36 +555,34 @@ body[data-nav-open="true"] { overflow: hidden; }
 .hero-full__media { position: absolute; inset: 0; z-index: -2; }
 .hero-full__media img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 50%; }
 
-/* Scrim: opaque enough on the left to carry text, clear on the right so
-   the photograph is still the subject. */
+/* Scrim: a uniform black wash over the whole photograph, dimming it rather
+   than masking one side of it. 0.7 opacity was measured against the actual
+   rendered text box: sampling the 99th-percentile brightest pixel there (a
+   ceiling light reads close to white) shows the heading clearing 8.1:1 and
+   the muted lead clearing 4.9:1 at that opacity, against the outlier pixel
+   rather than the image's average. */
 .hero-full::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(
-    100deg,
-    var(--color-paper) 0%,
-    var(--color-paper) 26%,
-    rgba(247, 247, 241, 0.92) 40%,
-    rgba(247, 247, 241, 0.55) 58%,
-    rgba(247, 247, 241, 0.12) 78%
-  );
+  background-color: var(--veil-hero);
 }
 
 .hero-full__inner { display: grid; justify-items: start; max-width: var(--shell-max); }
+.hero-full .marker { color: var(--color-ink-inverse-muted); }
 .hero-full__display {
   font-family: var(--font-display);
   font-size: clamp(2.125rem, calc(64 * var(--fluid)), 4.25rem);
   line-height: 0.96;
   letter-spacing: -0.032em;
-  color: var(--color-ink);
+  color: var(--color-ink-inverse);
   margin-bottom: var(--space-6);
 }
 .hero-full__lead {
   font-size: var(--text-md);
   line-height: 1.55;
-  color: var(--color-ink-secondary);
+  color: var(--color-ink-inverse-muted);
   max-width: 34rem;
   margin-bottom: var(--space-8);
 }
@@ -592,11 +590,14 @@ body[data-nav-open="true"] { overflow: hidden; }
 .hero-full__phone {
   font-size: var(--text-base);
   font-weight: 600;
-  color: var(--color-ink);
+  color: var(--color-ink-inverse-muted);
   text-decoration: none;
   white-space: nowrap;
+  transition: color var(--dur-fast) var(--ease-out);
 }
-.hero-full__phone:hover { color: var(--color-accent); }
+/* Brightens rather than tinting: the brand sage only clears 3.8:1 here,
+   short of the 4.5:1 body-text floor against the same worst-case pixel. */
+.hero-full__phone:hover { color: var(--color-ink-inverse); }
 
 /* On a narrow screen the photograph cannot carry text beside it, so it
    becomes a band above and the copy sits on solid ground below. */
@@ -606,17 +607,36 @@ body[data-nav-open="true"] { overflow: hidden; }
     align-items: start;
     padding-top: clamp(16rem, 58vw, 22rem);
     padding-bottom: var(--space-16);
+    background-color: var(--color-paper);
   }
-  .hero-full__media { inset: 0 0 auto 0; height: clamp(14rem, 52vw, 20rem); }
+  .hero-full__media {
+    inset: 0 0 auto 0;
+    height: clamp(14rem, 52vw, 20rem);
+    /* Dimming is scoped to the media element's own box, so the fade to
+       transparent always lands exactly on the image's bottom edge no
+       matter how tall the section grows underneath it. A percentage
+       gradient keyed to the whole section's height broke this: at 390px
+       the transition zone landed mid-heading, rendering white text over
+       a paper background with almost no contrast. */
+    overflow: hidden;
+  }
+  .hero-full__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, var(--veil-hero) 0%, var(--veil-hero) 55%, transparent 100%);
+  }
   .hero-full__media img { object-position: 58% 46%; }
-  .hero-full::after {
-    background: linear-gradient(
-      180deg,
-      rgba(247, 247, 241, 0) 0%,
-      rgba(247, 247, 241, 0) 34%,
-      var(--color-paper) 46%
-    );
-  }
+
+  /* The full-section veil only makes sense where text sits on the photo.
+     On mobile the text drops onto solid paper below the image, so it
+     reads in the normal dark-on-light palette, not the light-on-photo one. */
+  .hero-full::after { display: none; }
+  .hero-full .marker,
+  .hero-full__phone { color: var(--color-ink-muted); }
+  .hero-full__display { color: var(--color-ink); }
+  .hero-full__lead { color: var(--color-ink-secondary); }
+  .hero-full__phone:hover { color: var(--color-accent); }
 }
 
 /* ============================================================

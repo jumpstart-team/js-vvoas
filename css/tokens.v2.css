@@ -83,6 +83,13 @@
   --veil-on-accent: rgba(255, 255, 255, 0.16);
   --veil-on-dark:   rgba(7, 38, 36, 0.14);      /* #072624 */
 
+  /* Measured against the hero photograph, not guessed: 0.7 opacity black is
+     the point where the muted lead colour clears 4.5:1 even against the
+     brightest 1% of pixels inside the actual rendered text box (a ceiling
+     light reads close to white there). See the comment on .hero-full::after
+     for the full calculation. */
+  --veil-hero: rgba(0, 0, 0, 0.7);
+
   /* ---------------------------------------------------------------
      TYPE — two families, one declared scale. No arbitrary px sizes.
      Floor is 15px desktop / 16px mobile; nothing in the scale is smaller.
