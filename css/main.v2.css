@@ -158,9 +158,10 @@ summary:focus-visible {
   max-width: var(--measure);
 }
 
-/* Asymmetric header, taken from the reference board: the marker and the
-   heading hold the left column, the supporting line sits in the right and
-   aligns to the heading's baseline row rather than stacking beneath it. */
+/* Asymmetric header, taken from the reference board: the heading holds the
+   left column and the supporting line sits right, sharing its row rather
+   than stacking beneath it. Rows are implicit now that the numbered markers
+   are gone, so an empty first row cannot open up. */
 @media (min-width: 64rem) {
   .section-head {
     grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
@@ -169,15 +170,14 @@ summary:focus-visible {
     align-items: end;
     max-width: none;
   }
-  .section-head > .marker { grid-column: 1; grid-row: 1; margin-bottom: 0; }
-  .section-head > h2      { grid-column: 1; grid-row: 2; }
-  .section-head > .lead   { grid-column: 2; grid-row: 2; max-width: 32rem; }
+  .section-head > h2    { grid-column: 1; }
+  .section-head > .lead { grid-column: 2; grid-row: 1; max-width: 32rem; }
 }
 
 /* Inside the review header the block is already constrained by its own
    flex row, so it stays single column. */
 .quotes__head .section-head { grid-template-columns: minmax(0, 1fr); max-width: var(--measure); }
-.quotes__head .section-head > * { grid-column: 1; grid-row: auto; }
+.quotes__head .section-head > * { grid-column: 1; grid-row: auto; max-width: none; }
 
 .band-dark {
   background-color: var(--color-canvas);
@@ -1311,11 +1311,11 @@ a.contact-item__value:hover { color: var(--color-accent); }
 .qa__a p { font-size: var(--text-base); line-height: 1.6; color: var(--color-ink-secondary); }
 
 /* ============================================================
-   14e · NUMBERED SECTION MARKERS
-   Requested pattern, taken from the reference board. It deliberately
-   departs from the house rule against eyebrows, leading punctuation and
-   zero-padded numerals; the client asked for this specific look, and the
-   marker is stacked above its heading rather than set beside it.
+   14e · SECTION LABEL
+   One label survives, above the hero, because it carries the location.
+   The numbered markers were removed: zero-padded numerals and the short
+   rule before a label are both decoration, and the other eight labels
+   restated the heading directly beneath them.
    ============================================================ */
 
 .marker {
@@ -1326,23 +1326,10 @@ a.contact-item__value:hover { color: var(--color-accent); }
   color: var(--color-ink-muted);
   margin-bottom: var(--space-5);
 }
-.marker__n { color: var(--color-accent); font-variant-numeric: tabular-nums; }
 /* On the dark band the accent has almost no contrast, so the marker
    switches to the light pair. */
 .band-dark .marker { color: var(--color-ink-inverse-muted); }
-.band-dark .marker__n { color: var(--color-brand-sage); }
-.band-dark .marker__rule { background-color: var(--color-canvas-edge); }
-
-.marker__rule {
-  display: inline-block;
-  width: 1.5rem;
-  height: 1px;
-  margin: 0 var(--space-2) 0.25em;
-  background-color: var(--color-brand-grey);
-  vertical-align: middle;
-}
-
-/* ============================================================
+.band-dark .band-dark /* ============================================================
    14f · ALTERNATING BANDS
    The reference cycles its ground between three light tones so adjacent
    sections separate without rules. Mapped onto the supplied palette.
