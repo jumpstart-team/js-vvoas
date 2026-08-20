@@ -281,12 +281,21 @@ summary:focus-visible {
 .nav[data-scrolled="true"] .nav__pill { box-shadow: var(--elev-overlay); }
 
 .wordmark {
-  display: grid;
-  gap: 1px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
   text-decoration: none;
   margin-right: auto;
   line-height: 1;
 }
+.wordmark__mark {
+  width: 1.75rem;
+  height: 1.6rem;
+  flex: none;
+}
+.wordmark__mark-sage  { fill: var(--color-brand-sage); }
+.wordmark__mark-olive { fill: var(--color-brand-olive); }
+.wordmark__type { display: grid; gap: 2px; }
 .wordmark__name {
   font-family: var(--font-display);
   font-size: var(--text-lg);
@@ -563,36 +572,40 @@ body[data-nav-open="true"] { overflow: hidden; }
 
 .surgeon { display: grid; gap: var(--space-6); align-content: start; }
 
-/* Portrait placeholder. Replace the <div> with an <img> once the
-   practice supplies real headshots; the frame styling carries over. */
-.surgeon__portrait {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  display: grid;
-  place-items: center;
-  border-radius: var(--radius-lg);
-  border: var(--rule-hairline);
-  background-color: var(--color-paper-raised);
-  overflow: hidden;
-}
-.surgeon__portrait img { width: 100%; height: 100%; object-fit: cover; }
-.surgeon__initials {
-  font-family: var(--font-display);
-  font-size: var(--text-5xl);
-  color: var(--color-paper-edge);
-  letter-spacing: -0.03em;
-}
-.surgeon__portrait-note {
-  position: absolute;
-  bottom: var(--space-4);
-  left: var(--space-4);
-  right: var(--space-4);
-  text-align: center;
-  font-size: var(--text-sm);
-  color: var(--color-ink-muted);
+/* The surgeon photograph is a small square avatar rather than a large
+   portrait: the only real headshot the practice has is 500px wide, and a
+   tall frame would upscale it into mush. A modest avatar keeps it sharp
+   and lets the credentials carry the section. */
+.surgeon__head {
+  display: flex;
+  /* Top-aligned, not centred: one surgeon's name wraps to two lines and the
+     other's does not, and centring would leave the two avatars at different
+     heights across the pair. */
+  align-items: flex-start;
+  gap: var(--space-5);
 }
 
-.surgeon__name { font-size: var(--text-2xl); }
+.surgeon__avatar {
+  width: 5.5rem;
+  height: 5.5rem;
+  flex: none;
+  border-radius: var(--radius-pill);
+  object-fit: cover;
+  background-color: var(--color-paper-sunk);
+}
+
+.surgeon__avatar--placeholder {
+  display: grid;
+  place-items: center;
+  background-color: var(--color-paper-sunk);
+  box-shadow: inset 0 0 0 1px var(--color-paper-edge);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  color: var(--color-ink-muted);
+  letter-spacing: 0.02em;
+}
+
+.surgeon__name { font-size: var(--text-xl); }
 .surgeon__role {
   font-size: var(--text-base);
   font-weight: 600;
@@ -851,6 +864,135 @@ a.contact-item__value:hover { color: var(--color-accent); }
 }
 
 /* ============================================================
+   14b · IMAGERY
+   Every photograph on the page comes from the practice's existing site.
+   ============================================================ */
+
+/* The office. A real photograph of the reception, which does more to
+   settle a nervous patient than any amount of copy. */
+.office { padding-block: var(--space-8) 0; }
+
+.office__figure {
+  margin: 0;
+  display: grid;
+  gap: var(--space-4);
+}
+.office__figure img {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+  object-position: center 42%;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-paper-sunk);
+}
+.office__caption {
+  font-size: var(--text-sm);
+  color: var(--color-ink-muted);
+}
+
+/* Society membership marks. Greyscale at rest so two unrelated logo
+   palettes do not fight the brand; full colour is one hover away. */
+.affiliations {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-6) var(--space-10);
+  margin-top: var(--space-20);
+  padding: var(--space-8);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-paper-raised);
+}
+.affiliations__label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+.affiliations__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-10);
+}
+.affiliations__list img {
+  height: 2.75rem;
+  width: auto;
+  filter: grayscale(1);
+  opacity: 0.72;
+  transition: opacity var(--dur-mid) var(--ease-out);
+}
+.affiliations__list img:hover { opacity: 1; }
+
+/* The sedation band carries the practice's own geometric texture, held
+   well back so the measured contrast of the band still holds. */
+.comfort { position: relative; isolation: isolate; overflow: hidden; }
+.comfort::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("../img/texture-dark.webp");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.visit__figure {
+  margin: 0 0 var(--space-12);
+  max-width: 22rem;
+}
+.visit__figure img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-paper-sunk);
+}
+
+/* Area band */
+.area { padding-block: var(--space-section) 0; }
+.area__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(var(--space-8), 5vw, var(--space-16));
+  padding: var(--space-2);
+  border-radius: var(--radius-xl);
+  border: var(--rule-hairline);
+  background-color: var(--color-paper-raised);
+}
+.area__img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: calc(var(--radius-xl) - var(--space-2));
+  background-color: var(--color-paper-sunk);
+}
+.area__copy {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-4) clamp(var(--space-4), 3vw, var(--space-10)) var(--space-4) 0;
+}
+
+/* The footer carries the chevron redrawn, not the logo file. The supplied
+   artwork is pre-rebrand: it names only Dr. Awalt and gives the suite as
+   103-104, which contradicts the address elsewhere on the page. */
+.footer__lockup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+.footer__lockup .wordmark__mark { width: 2rem; height: 1.85rem; }
+.footer__lockup .wordmark__name { color: var(--color-ink-inverse); font-size: var(--text-lg); }
+.footer__lockup .wordmark__kind { color: var(--color-ink-inverse-muted); }
+/* The olive half of the mark disappears against the olive band, so on dark
+   it is carried in the inverse ink instead. The sage half is unchanged. */
+.footer__lockup .wordmark__mark-olive { fill: var(--color-ink-inverse-muted); }
+
+/* ============================================================
    15 · SCROLL REVEAL — driven by IntersectionObserver in main.js
    ============================================================ */
 
@@ -869,6 +1011,13 @@ a.contact-item__value:hover { color: var(--color-accent); }
 /* ============================================================
    16 · RESPONSIVE
    ============================================================ */
+
+/* Between the widest phone and a roomy laptop the pill still shows every
+   link, but the chevron mark costs it width, so the gaps tighten. */
+@media (max-width: 72rem) {
+  .nav__pill { gap: var(--space-4); padding-left: var(--space-5); }
+  .nav__links { gap: var(--space-5); }
+}
 
 @media (max-width: 60rem) {
   .hero__grid,
@@ -896,8 +1045,18 @@ a.contact-item__value:hover { color: var(--color-accent); }
   .nav__pill { gap: var(--space-3); padding-left: var(--space-5); }
 }
 
+@media (max-width: 60rem) {
+  .area__inner { grid-template-columns: minmax(0, 1fr); }
+  .area__copy { padding: 0 var(--space-6) var(--space-6); }
+}
+
 @media (max-width: 40rem) {
   .hero__proof { grid-template-columns: minmax(0, 1fr); gap: var(--space-5); }
+  .office__figure img { aspect-ratio: 4 / 3; }
+  .affiliations { gap: var(--space-6); }
+  .affiliations__list { gap: var(--space-8); }
+  .surgeon__head { gap: var(--space-4); }
+  .surgeon__avatar { width: 4.25rem; height: 4.25rem; }
   .urgent__inner { flex-direction: column; align-items: stretch; }
   .urgent__inner .btn { justify-content: space-between; }
   .section-head { margin-bottom: var(--space-10); }

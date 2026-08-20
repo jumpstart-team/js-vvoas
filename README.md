@@ -93,20 +93,31 @@ Every colour, font, size, space and easing lives in `css/tokens.css`.
 `main.css` never hardcodes a value, it only references tokens by name. To
 change the look, edit that one file.
 
-The current system:
+The current system is the practice's own brand, not an invented one. Two
+colours were sampled from the pixels of the existing logo artwork:
 
-- **Paper** warm bone, `oklch(97.5% 0.008 85)`
-- **Accent** deep pine, `oklch(38% 0.062 158)`, chosen to avoid the default
-  healthcare blue
+- **Sage** `#8caeab`, `oklch(72.5% 0.0373 189.7)` — the upper chevron
+- **Olive** `#544430`, `oklch(39.8% 0.0383 72.6)` — the lower chevron
+
+plus `#3c3c3c` body ink, `#ecf1f3` pale wash and `#c40000` error from the old
+stylesheet, and white as the ground.
+
+Neither brand colour can carry text. `#8caeab` is 2.40:1 on white, and the old
+site set every heading and link in `#9c9c9c` at 2.75:1, both well under the
+4.5:1 floor. So the two logo colours are kept **exact** for marks and fills,
+and the text steps are derived by darkening along the identical hue. The
+identity is the hue, not the lightness.
+
 - **Display** Newsreader
 - **Body** Instrument Sans
 - **Spacing** 4pt base unit
 - **Type scale** 15 / 17 / 19 / 22 / 27 / 34 / 44 / 58 / 76 px, plus two
   fluid display sizes
 
-All twenty foreground and background pairings were checked against WCAG AA.
-The lowest is the focus ring at 5.57:1 against a raised surface, which needs
-3:1. Body text sits between 6.4:1 and 16.5:1.
+All twenty-four foreground and background pairings were checked against
+WCAG AA and all pass. The textured sedation band was checked a second way,
+by sampling the rendered pixels underneath each block of text: the real
+background there is `#312a1f`, giving between 8.4:1 and 13.2:1.
 
 ## Content notes
 
@@ -118,12 +129,39 @@ Nothing was invented. There are no fabricated statistics, no made-up review
 counts and no claims about how fast someone can be seen, because none of
 that was verifiable from the source.
 
-Two things still need the practice to supply them:
+### Images
 
-- **Headshots.** Both surgeon portraits are placeholders. Each one is a
-  `<div class="surgeon__portrait">` with an HTML comment above it showing
-  where the `<img>` goes. The frame styling carries over unchanged.
-- **The form endpoint**, as above.
+Every photograph is the practice's own, taken from the current site and
+re-encoded to webp.
+
+| File | Source | Used for |
+|---|---|---|
+| `office.webp` | `home_banner/1.jpg` | The real reception, under the hero |
+| `dr-charnowitz.webp` | `charnowitz.jpg` | Dr. Charnowitz's avatar |
+| `texture-dark.webp` | `home_expertise/bg.jpg` | Texture behind the sedation band |
+| `consult.webp` | `dr_awalt.jpg` | Clinical photo in the first-visit section |
+| `baltimore.webp` | `home_parallax/1.jpg` | The greater-Baltimore band |
+| `aaoms.webp`, `ada.webp` | `associations/` | Society membership marks |
+
+The whole image set is under 500 KB.
+
+The chevron in the nav and footer is the logo mark redrawn as inline SVG, in
+the two exact brand colours, so it stays sharp at any size.
+
+### Three things found in the source material
+
+1. **There is no photograph of Dr. Awalt.** The file named `dr_awalt.jpg` on
+   the current site is a stock image of a clinician showing an x-ray to a
+   patient, not a portrait of her. It is used here as a clinical photo in the
+   first-visit section, never captioned as her. Her avatar is a marked
+   placeholder until the practice supplies a headshot.
+2. **The logo artwork predates the rebrand.** It reads "Bethany Serafin
+   Awalt, DMD, PA." only, with no mention of Dr. Charnowitz. The original
+   file is kept at `img/logo.png` for reference but is not used on the page;
+   the footer carries the redrawn chevron and the practice name instead.
+3. **The suite number disagrees with itself.** The logo says "Suites 103-104"
+   while the site body text says "Suite 103". The page uses Suite 103,
+   matching the body text. Worth confirming which is right.
 
 ## Accessibility
 

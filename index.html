@@ -33,8 +33,16 @@
 <header class="nav" id="siteNav">
   <div class="nav__pill">
     <a class="wordmark" href="#top">
-      <span class="wordmark__name">Valley Village</span>
-      <span class="wordmark__kind">Oral Surgery Associates</span>
+      <!-- The practice chevron, redrawn from the logo artwork so it stays
+           crisp at any size. Colours are the two logo tokens, exact. -->
+      <svg class="wordmark__mark" viewBox="0 0 120 112" aria-hidden="true" focusable="false">
+        <polygon class="wordmark__mark-olive" points="8,40 60,84 112,40 112,66 60,110 8,66"/>
+        <polygon class="wordmark__mark-sage"  points="30,8 60,48 90,8 90,34 60,74 30,34"/>
+      </svg>
+      <span class="wordmark__type">
+        <span class="wordmark__name">Valley Village</span>
+        <span class="wordmark__kind">Oral Surgery Associates</span>
+      </span>
     </a>
 
     <nav class="nav__links" aria-label="Primary">
@@ -134,6 +142,22 @@
       </div>
     </dl>
 
+  </div>
+</section>
+
+<!-- ============ THE OFFICE ============ -->
+<section class="office">
+  <div class="shell">
+    <figure class="office__figure" data-reveal>
+      <img src="img/office.webp"
+           srcset="img/office-sm.webp 760w, img/office.webp 1500w"
+           sizes="(max-width: 78rem) 100vw, 78rem"
+           width="1500" height="656" loading="lazy" decoding="async"
+           alt="The reception desk at Valley Village Oral Surgery Associates, with the practice logo on the wall behind it.">
+      <figcaption class="office__caption">
+        Ground floor at 2 Reservoir Circle, with parking outside the door.
+      </figcaption>
+    </figure>
   </div>
 </section>
 
@@ -238,15 +262,17 @@
     <div class="surgeons__grid">
 
       <article class="surgeon" data-reveal>
-        <!-- Replace this div with <img src="..." alt="Dr. Bethany Serafin Awalt"> when the headshot is supplied -->
-        <div class="surgeon__portrait">
-          <span class="surgeon__initials" aria-hidden="true">BA</span>
-          <span class="surgeon__portrait-note">Portrait to be supplied</span>
-        </div>
-
-        <div>
-          <h3 class="surgeon__name">Bethany Serafin Awalt, DMD, PA</h3>
-          <p class="surgeon__role">Owner and oral &amp; maxillofacial surgeon</p>
+        <div class="surgeon__head">
+          <!-- No photograph of Dr. Awalt exists on the current site. Swap this
+               div for <img class="surgeon__avatar" src="img/dr-awalt.webp" alt="Dr. Bethany Serafin Awalt">
+               once the practice supplies a headshot. -->
+          <div class="surgeon__avatar surgeon__avatar--placeholder" title="Photograph to be supplied">
+            <span aria-hidden="true">BA</span>
+          </div>
+          <div>
+            <h3 class="surgeon__name">Bethany Serafin Awalt, DMD, PA</h3>
+            <p class="surgeon__role">Owner and oral &amp; maxillofacial surgeon</p>
+          </div>
         </div>
 
         <div class="surgeon__bio">
@@ -282,15 +308,14 @@
       </article>
 
       <article class="surgeon" data-reveal>
-        <!-- Replace this div with <img src="..." alt="Dr. Neil Charnowitz"> when the headshot is supplied -->
-        <div class="surgeon__portrait">
-          <span class="surgeon__initials" aria-hidden="true">NC</span>
-          <span class="surgeon__portrait-note">Portrait to be supplied</span>
-        </div>
-
-        <div>
-          <h3 class="surgeon__name">Neil Charnowitz, DDS</h3>
-          <p class="surgeon__role">Oral &amp; maxillofacial surgeon</p>
+        <div class="surgeon__head">
+          <img class="surgeon__avatar" src="img/dr-charnowitz.webp"
+               width="360" height="360" loading="lazy" decoding="async"
+               alt="Dr. Neil Charnowitz, oral and maxillofacial surgeon.">
+          <div>
+            <h3 class="surgeon__name">Neil Charnowitz, DDS</h3>
+            <p class="surgeon__role">Oral &amp; maxillofacial surgeon</p>
+          </div>
         </div>
 
         <div class="surgeon__bio">
@@ -328,11 +353,21 @@
       </article>
 
     </div>
+
+    <div class="affiliations" data-reveal>
+      <p class="affiliations__label">Both surgeons hold membership in</p>
+      <ul class="affiliations__list">
+        <li><img src="img/aaoms.webp" width="400" height="143" loading="lazy" decoding="async"
+                 alt="American Association of Oral and Maxillofacial Surgeons"></li>
+        <li><img src="img/ada.webp" width="400" height="147" loading="lazy" decoding="async"
+                 alt="American Dental Association"></li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <!-- ============ COMFORT ============ -->
-<section class="section band-dark" id="comfort">
+<section class="section band-dark comfort" id="comfort">
   <div class="shell">
     <div class="section-head" data-reveal>
       <h2 class="heading-1">You do not have to be awake for this</h2>
@@ -408,6 +443,11 @@
       </p>
     </div>
 
+    <figure class="visit__figure" data-reveal>
+      <img src="img/consult.webp" width="800" height="800" loading="lazy" decoding="async"
+           alt="A surgeon reviewing a panoramic dental x-ray on a tablet with a patient.">
+    </figure>
+
     <div class="logistics__grid">
       <div class="logistics__col" data-reveal>
         <h3>Bring with you</h3>
@@ -435,6 +475,27 @@
           <li>The front desk handles insurance and billing questions, and bilingual staff are available</li>
           <li>The office is on the ground floor with parking outside the door, and is reachable by public transit</li>
         </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AREA ============ -->
+<section class="area">
+  <div class="shell">
+    <div class="area__inner" data-reveal>
+      <img class="area__img" src="img/baltimore.webp"
+           srcset="img/baltimore-sm.webp 760w, img/baltimore.webp 1500w"
+           sizes="(max-width: 60rem) 100vw, 50vw"
+           width="1500" height="844" loading="lazy" decoding="async"
+           alt="The Baltimore Inner Harbour skyline.">
+      <div class="area__copy">
+        <h2 class="heading-2">Referrals from across greater Baltimore</h2>
+        <p>
+          Patients come to Pikesville from across the metro area, sent by their
+          general dentists and orthodontists. Both surgeons hold hospital
+          appointments in the city, so complex cases stay inside one chain of care.
+        </p>
       </div>
     </div>
   </div>
@@ -553,7 +614,16 @@
     <div class="footer__grid">
       <div class="footer__col">
         <h3>Practice</h3>
-        <p>Valley Village Oral Surgery Associates</p>
+        <div class="footer__lockup">
+          <svg class="wordmark__mark" viewBox="0 0 120 112" aria-hidden="true" focusable="false">
+            <polygon class="wordmark__mark-olive" points="8,40 60,84 112,40 112,66 60,110 8,66"/>
+            <polygon class="wordmark__mark-sage"  points="30,8 60,48 90,8 90,34 60,74 30,34"/>
+          </svg>
+          <span class="wordmark__type">
+            <span class="wordmark__name">Valley Village</span>
+            <span class="wordmark__kind">Oral Surgery Associates</span>
+          </span>
+        </div>
         <address>
           2 Reservoir Circle, Suite 103<br>
           Pikesville, MD 21208

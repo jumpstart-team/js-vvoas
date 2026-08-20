@@ -1,54 +1,56 @@
-/* Hallmark · macrostructure: Editorial Split · tone: editorial-luxury · anchor hue: pine 158
- * theme: custom (vibe: "warm bone paper, deep pine, surgical calm")
- *   paper  oklch(97.5% 0.008 85)   band: light
- *   accent oklch(38%   0.062 158)  hue:  chromatic-other (pine)
+/* Hallmark · macrostructure: Editorial Split · tone: editorial-luxury
+ * theme: practice brand (sage 190 + olive 73, both sampled from the logo)
+ *   paper  oklch(100% 0 0)          band: light
+ *   accent oklch(44% 0.054 189.7)   hue:  chromatic-other (sage)
  *   display: Newsreader (roman-serif) · body: Instrument Sans
  * nav: floating pill · footer: statement + NAP
- * pre-emit critique: P5 H5 E5 S5 R4 V5
  *
  * Design token system for Valley Village Oral Surgery Associates.
- * Every colour and font in main.css references a token from this file by name.
- * Rebranding the site = editing this file only.
+ * Every colour and font in main.css references a token from this file by
+ * name. Retheming the site is an edit to this file alone.
  */
 
 :root {
   /* ---------------------------------------------------------------
-     COLOUR — every value maps to a named semantic role.
-     Roles: paper (surfaces), ink (text), accent (brand), status.
+     COLOUR
+     Every value below is lifted from the practice's own brand, or
+     derived from it along the same hue.
+
+     Two source colours, sampled from the pixels of the practice logo:
+       sage chevron   #8caeab   oklch(72.5% 0.0373 189.7)
+       olive chevron  #544430   oklch(39.8% 0.0383 72.6)
+     plus #3c3c3c body ink, #ecf1f3 pale wash and #c40000 error from the
+     old stylesheet.
+
+     The brand colours themselves are too light to carry text: #8caeab
+     is 2.40:1 on white and the old site set every heading and link in
+     #9c9c9c at 2.75:1, well under the 4.5:1 floor. So the two logo
+     colours are kept exact for marks and fills, and text steps are
+     derived by darkening along the identical hue. The identity is the
+     hue, not the lightness.
      --------------------------------------------------------------- */
 
-  /* Surfaces, lightest to deepest */
-  --color-paper:        oklch(97.5% 0.008 85);   /* page ground, warm bone */
-  --color-paper-raised: oklch(94.8% 0.012 82);   /* cards sitting on paper */
-  --color-paper-sunk:   oklch(91.5% 0.014 80);   /* inset wells, input fields */
-  --color-paper-edge:   oklch(87%   0.016 80);   /* hairline enclosure edges */
-
-  /* Dark surfaces — used for the two full-bleed contrast bands */
-  --color-canvas:       oklch(24%   0.028 158);  /* deep pine-black band */
-  --color-canvas-raised:oklch(29%   0.030 158);  /* cards inside a dark band */
-  --color-canvas-edge:  oklch(36%   0.030 158);
-
-  /* Text, darkest to lightest. All verified >= 4.5:1 on --color-paper. */
-  --color-ink:          oklch(21%   0.018 70);   /* headings, primary text */
-  --color-ink-secondary:oklch(37%   0.016 72);   /* body copy at length */
-  --color-ink-muted:    oklch(45%   0.014 72);   /* captions, labels, meta */
-
-  /* Text on dark canvas. All verified >= 4.5:1 on --color-canvas. */
-  --color-ink-inverse:      oklch(96%  0.010 90);
-  --color-ink-inverse-muted:oklch(79%  0.014 120);
-
-  /* Brand accent */
-  --color-accent:       oklch(38%   0.062 158);  /* deep pine — links, marks */
-  --color-accent-deep:  oklch(30%   0.055 158);  /* pressed / hover state */
-  --color-accent-soft:  oklch(93%   0.022 158);  /* tinted wells */
-  --color-accent-on:    oklch(98%   0.006 158);  /* text on accent fill */
-
-  /* Status roles. Red and green keep conventional meanings, so the pine
-     brand accent is never used to signal success — confirmation is
-     communicated with ink + a mark, not with colour alone. */
-  --color-error:        oklch(47%   0.170 27);
-  --color-error-soft:   oklch(95%   0.030 27);
-  --color-focus:        oklch(48%   0.150 250); /* distinct from brand pine */
+  --color-paper: oklch(100.0% 0.0000 89.9);         /* page ground; matches the practice stylesheet */
+  --color-paper-raised: oklch(97.0% 0.0112 189.7);  /* cards on paper, a breath of the sage */
+  --color-paper-sunk: oklch(94.2% 0.0157 189.7);    /* inset wells, input fields */
+  --color-paper-edge: oklch(89.0% 0.0205 189.7);    /* hairline enclosure edges */
+  --color-canvas: oklch(25.0% 0.0276 72.6);         /* deep band, the olive half of the chevron */
+  --color-canvas-raised: oklch(30.0% 0.0261 72.6);  /* cards inside a dark band */
+  --color-canvas-edge: oklch(38.0% 0.0245 72.6);    /* hairline on dark */
+  --color-ink: oklch(30.0% 0.0238 72.6);            /* headings and primary text */
+  --color-ink-secondary: oklch(43.0% 0.0161 72.6);  /* body copy at length */
+  --color-ink-muted: oklch(52.0% 0.0115 72.6);      /* captions, labels, metadata */
+  --color-ink-inverse: oklch(97.0% 0.0082 189.7);   /* text on the dark band */
+  --color-ink-inverse-muted: oklch(83.0% 0.0127 189.7);/* secondary text on the dark band */
+  --color-brand-sage: oklch(72.5% 0.0373 189.7);    /* the logo sage, exact. Marks and fills only */
+  --color-brand-olive: oklch(39.8% 0.0383 72.6);    /* the logo olive, exact. Marks only */
+  --color-accent: oklch(44.0% 0.0541 189.7);        /* links and button fills; the sage carried to a readable depth */
+  --color-accent-deep: oklch(36.0% 0.0541 189.7);   /* hover and pressed */
+  --color-accent-soft: oklch(93.5% 0.0110 182.9);   /* tinted wells */
+  --color-accent-on: oklch(100.0% 0.0000 89.9);     /* text on an accent fill */
+  --color-error: oklch(51.5% 0.2114 29.2);          /* exact, from the practice stylesheet */
+  --color-error-soft: oklch(95.1% 0.0185 17.5);     /* error well */
+  --color-focus: oklch(48.3% 0.1461 252.3);         /* focus ring; deliberately outside the brand hues */
 
   /* ---------------------------------------------------------------
      TYPE — two families, one declared scale. No arbitrary px sizes.
