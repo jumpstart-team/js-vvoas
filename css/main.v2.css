@@ -219,7 +219,6 @@ summary:focus-visible {
   font-family: var(--font-body);
   font-size: var(--text-base);
   font-weight: 600;
-  letter-spacing: -0.002em;
   line-height: 1.2;
   text-decoration: none;
   cursor: pointer;
@@ -1324,7 +1323,6 @@ a.contact-item__value:hover { color: var(--color-accent); }
   font-family: var(--font-body);
   font-size: var(--text-sm);
   font-weight: 500;
-  letter-spacing: 0.04em;
   color: var(--color-ink-muted);
   margin-bottom: var(--space-5);
 }
