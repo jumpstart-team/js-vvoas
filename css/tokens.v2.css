@@ -170,6 +170,15 @@
   --elev-overlay: 0 2px 6px oklch(21% 0.018 70 / 0.06),
                   0 32px 64px -24px oklch(21% 0.018 70 / 0.22);
 
+  /* A shadow this dark is invisible against a light ground and would be
+     invisible again against the canvas ground for the opposite reason:
+     the ink-toned --elev-raised colour reads as no shadow at all next to
+     an already near-black surface. Raised surfaces sitting on the dark
+     canvas use true black instead, so the same two-layer geometry still
+     registers there. */
+  --elev-raised-dark: 0 1px 2px rgba(0, 0, 0, 0.35),
+                       0 16px 40px -16px rgba(0, 0, 0, 0.55);
+
   /* Hairline enclosure — a structural edge, never a decorative stripe */
   --rule-hairline: 1px solid var(--color-paper-edge);
   --rule-inverse:  1px solid var(--color-canvas-edge);

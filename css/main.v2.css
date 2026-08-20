@@ -813,6 +813,7 @@ body[data-nav-open="true"] { overflow: hidden; }
   border-radius: var(--radius-lg);
   border: var(--rule-inverse);
   background-color: var(--color-canvas-raised);
+  box-shadow: var(--elev-raised-dark);
 }
 .comfort__card h3 { font-size: var(--text-lg); }
 
@@ -879,6 +880,7 @@ body[data-nav-open="true"] { overflow: hidden; }
   padding: clamp(var(--space-6), 3vw, var(--space-8));
   border-radius: var(--radius-lg);
   background-color: var(--color-paper-raised);
+  box-shadow: var(--elev-raised);
 }
 .quote__text {
   font-family: var(--font-display);
@@ -1233,6 +1235,7 @@ a.contact-item__value:hover { color: var(--color-accent); }
   border-radius: var(--radius-xl);
   border: var(--rule-hairline);
   background-color: var(--color-paper-raised);
+  box-shadow: var(--elev-raised);
 }
 /* Inner core, concentric radius, so the card reads as machined */
 .step > * { margin-inline: clamp(var(--space-4), 2vw, var(--space-6)); }
@@ -1269,10 +1272,13 @@ a.contact-item__value:hover { color: var(--color-accent); }
 .qa {
   border-radius: var(--radius-md);
   background-color: var(--color-paper-raised);
-  transition: background-color var(--dur-fast) var(--ease-out);
+  transition: background-color var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
 }
 .qa:hover { background-color: var(--color-paper-sunk); }
-.qa[open] { background-color: var(--color-paper-sunk); }
+/* An open answer lifts a level, to overlay, since it is now standing
+   above its still-closed siblings rather than sitting flush with them. */
+.qa[open] { background-color: var(--color-paper-sunk); box-shadow: var(--elev-overlay); }
 
 .qa__q {
   display: flex;
@@ -1351,8 +1357,9 @@ a.contact-item__value:hover { color: var(--color-accent); }
   border-radius: var(--radius-xl);
   background-color: var(--color-paper-sunk);
   min-height: clamp(15rem, calc(300 * var(--fluid)), 20rem);
+  box-shadow: var(--elev-raised);
 }
-.panel--dark { background-color: var(--color-canvas); color: var(--color-ink-inverse-muted); }
+.panel--dark { background-color: var(--color-canvas); color: var(--color-ink-inverse-muted); box-shadow: var(--elev-raised-dark); }
 .panel--dark .panel__figure,
 .panel--dark .panel__title { color: var(--color-ink-inverse); }
 
@@ -1431,6 +1438,7 @@ a.contact-item__value:hover { color: var(--color-accent); }
   color: var(--color-accent-on);
   text-decoration: none;
   position: relative;
+  box-shadow: var(--elev-raised);
   transition: transform var(--dur-mid) var(--ease-out);
 }
 .badge-circle:hover { transform: scale(1.04); }
