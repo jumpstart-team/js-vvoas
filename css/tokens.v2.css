@@ -77,6 +77,12 @@
   --color-error-soft: #fbeaea;
   --color-focus:      #2855ad;   /* distinct from the sage brand hue */
 
+  /* Translucent veils. Kept as tokens so they track the palette above
+     rather than drifting when it changes. */
+  --veil-paper:     rgba(247, 247, 241, 0.94);  /* #F7F7F1 */
+  --veil-on-accent: rgba(255, 255, 255, 0.16);
+  --veil-on-dark:   rgba(7, 38, 36, 0.14);      /* #072624 */
+
   /* ---------------------------------------------------------------
      TYPE — two families, one declared scale. No arbitrary px sizes.
      Floor is 15px desktop / 16px mobile; nothing in the scale is smaller.
@@ -84,19 +90,21 @@
   --font-display: "Newsreader", "Iowan Old Style", Georgia, "Times New Roman", serif;
   --font-body: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-  --text-sm:    0.9375rem;  /* 15px — labels, meta. Never smaller. */
-  --text-base:  1.0625rem;  /* 17px — default body */
-  --text-md:    1.1875rem;  /* 19px — lead paragraphs */
-  --text-lg:    1.375rem;   /* 22px */
-  --text-xl:    1.6875rem;  /* 27px */
-  --text-2xl:   2.125rem;   /* 34px */
-  --text-3xl:   2.75rem;    /* 44px */
-  --text-4xl:   3.625rem;   /* 58px */
-  --text-5xl:   4.75rem;    /* 76px */
+  --text-sm:    0.9375rem;  /* 15px — labels, meta. The desktop floor.
+                               Raised to 16px on small screens below. */
+  --text-base:  1rem;       /* 16px — default body, and every form input,
+                               which keeps iOS Safari from zooming on focus */
+  --text-md:    1.125rem;   /* 18px — lead paragraphs */
+  --text-lg:    1.25rem;    /* 20px */
+  --text-xl:    1.5rem;     /* 24px */
+  --text-2xl:   1.875rem;   /* 30px */
+  --text-3xl:   2.375rem;   /* 38px */
+  --text-4xl:   3rem;       /* 48px */
+  --text-5xl:   3.75rem;    /* 60px */
 
   /* Fluid display sizes. Lower bound respects 320px viewports. */
-  --text-display:   clamp(2.625rem, 1.35rem + 6.2vw, 5.75rem);
-  --text-display-s: clamp(2.125rem, 1.25rem + 4.2vw, 3.875rem);
+  --text-display:   clamp(2.25rem, 1.2rem + 4.6vw, 4.25rem);
+  --text-display-s: clamp(1.875rem, 1.15rem + 2.9vw, 3rem);
 
   --leading-tight: 1.04;
   --leading-snug:  1.22;

@@ -120,9 +120,11 @@ the darkest light surface it is ever set on. At the more obvious L51% it read
 
 - **Display** Newsreader. **Body** Instrument Sans. Both self-hosted.
 - **Spacing** 4pt base unit
-- **Type scale** 15 / 17 / 19 / 22 / 27 / 34 / 44 / 58 / 76 px, plus fluid
+- **Type scale** 16 / 16 / 18 / 20 / 24 / 30 / 38 / 48 / 60 px, plus fluid
   display sizes authored as "N pixels on a 1440 canvas" through
-  `calc(N * var(--fluid))` and clamped at both ends
+  `calc(N * var(--fluid))` and clamped at both ends. `--text-sm` is 15px on
+  desktop and steps up to 16px under 40rem, so nothing on a phone,
+  labels and meta included, ever drops below the floor.
 
 All 27 foreground and background pairings were computed against WCAG AA and
 all pass. Body text runs 5.35:1 to 15.09:1.
@@ -202,7 +204,7 @@ the two exact brand colours, so it stays sharp at any size.
 - Reduced motion is respected; spatial movement collapses to a short fade
 - Scroll reveals are driven by `IntersectionObserver`, and the page renders
   fully with JavaScript disabled
-- Body text is 17px, never below 15px, and form inputs are 17px so iOS Safari
-  does not zoom on focus
+- Body text and form inputs are 16px on mobile and desktop, so iOS Safari never
+  zooms on focus
 - Verified with no horizontal scroll and no wrapped button labels at 320,
   375, 414, 768, 1024 and 1440px

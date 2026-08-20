@@ -26,7 +26,7 @@ html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
   /* Offset for the floating nav when jumping to an in-page anchor */
-  scroll-padding-top: var(--space-24);
+  scroll-padding-top: var(--space-8);
 }
 
 body {
@@ -237,7 +237,7 @@ summary:focus-visible {
   height: 2rem;
   flex: none;
   border-radius: var(--radius-pill);
-  background-color: oklch(100% 0 0 / 0.16);
+  background-color: var(--veil-on-accent);
   transition: transform var(--dur-mid) var(--ease-out);
 }
 .btn__mark svg { width: 0.875rem; height: 0.875rem; }
@@ -272,7 +272,7 @@ summary:focus-visible {
   --btn-fill: var(--color-ink-inverse);
   --btn-text: var(--color-canvas);
 }
-.btn--onDark .btn__mark { background-color: oklch(24% 0.028 158 / 0.14); }
+.btn--onDark .btn__mark { background-color: var(--veil-on-dark); }
 
 .btn--quiet {
   --btn-fill: transparent;
@@ -286,9 +286,11 @@ summary:focus-visible {
    ============================================================ */
 
 .nav {
-  position: sticky;
-  top: var(--space-4);
+  /* relative, not static: the bar scrolls away with the page, but z-index
+     is ignored on a static element and the hero image painted over it */
+  position: relative;
   z-index: var(--z-sticky);
+  padding-top: var(--space-4);
   padding-inline: var(--shell-pad);
   margin-bottom: calc(var(--space-16) * -1);
 }
@@ -302,14 +304,11 @@ summary:focus-visible {
   padding: var(--space-3) var(--space-3) var(--space-3) var(--space-6);
   border-radius: var(--radius-pill);
   border: var(--rule-hairline);
-  background-color: oklch(97.5% 0.008 85 / 0.82);
-  /* Blur is safe here: the element is sticky, never a scrolling container */
-  backdrop-filter: blur(20px) saturate(1.4);
-  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  /* Opaque, not blurred. The bar scrolls with the page now, and a
+     backdrop-filter on a scrolling element repaints on every frame. */
+  background-color: var(--color-paper);
   box-shadow: var(--elev-raised);
-  transition: box-shadow var(--dur-mid) var(--ease-out);
 }
-.nav[data-scrolled="true"] .nav__pill { box-shadow: var(--elev-overlay); }
 
 .wordmark {
   display: flex;
@@ -422,7 +421,7 @@ summary:focus-visible {
   align-content: center;
   gap: var(--space-8);
   padding: var(--space-10) var(--shell-pad);
-  background-color: oklch(97.5% 0.008 85 / 0.94);
+  background-color: var(--veil-paper);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
   opacity: 0;
@@ -461,30 +460,6 @@ body[data-nav-open="true"] { overflow: hidden; }
 /* ============================================================
    6 · HERO — editorial split: statement left, booking card right
    ============================================================ */
-
-.hero { padding-block: clamp(var(--space-32), 20vw, 12.5rem) var(--space-section); }
-
-.hero__grid {
-  display: grid;
-  column-gap: clamp(var(--space-12), 6vw, var(--space-20));
-  row-gap: clamp(var(--space-10), 4vw, var(--space-16));
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-  align-items: start;
-}
-
-/* Explicit placement so the booking card can be ordered above the proof
-   list on mobile, where a visitor should reach a CTA before a credentials
-   list rather than after it. */
-.hero__statement { grid-column: 1; grid-row: 1; display: grid; gap: var(--space-8); }
-.hero__proof     { grid-column: 1; grid-row: 2; }
-.hero__aside     { grid-column: 2; grid-row: 1 / span 2; }
-
-.hero__display {
-  /* authored at 116px on the 1440 canvas, clamped at both ends */
-  font-size: clamp(2.5rem, calc(84 * var(--fluid)), 5.75rem);
-  line-height: 0.98;
-  letter-spacing: -0.03em;
-}
 
 .hero__proof {
   display: grid;
@@ -600,7 +575,7 @@ body[data-nav-open="true"] { overflow: hidden; }
 .hero-full__inner { display: grid; justify-items: start; max-width: var(--shell-max); }
 .hero-full__display {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, calc(88 * var(--fluid)), 6rem);
+  font-size: clamp(2.125rem, calc(64 * var(--fluid)), 4.25rem);
   line-height: 0.96;
   letter-spacing: -0.032em;
   color: var(--color-ink);
@@ -1365,7 +1340,7 @@ a.contact-item__value:hover { color: var(--color-accent); }
    panel class as well. */
 .panel .panel__figure {
   font-family: var(--font-display);
-  font-size: clamp(3.25rem, calc(76 * var(--fluid)), 5rem);
+  font-size: clamp(2.5rem, calc(56 * var(--fluid)), 3.5rem);
   line-height: 0.86;
   letter-spacing: -0.03em;
   color: var(--color-accent);
@@ -1546,15 +1521,7 @@ a.contact-item__value:hover { color: var(--color-accent); }
 }
 
 @media (max-width: 60rem) {
-  .hero__grid,
   .request__grid { grid-template-columns: minmax(0, 1fr); }
-
-  .hero__statement,
-  .hero__proof,
-  .hero__aside { grid-column: 1; grid-row: auto; }
-  .hero__statement { order: 1; }
-  .hero__aside     { order: 2; }
-  .hero__proof     { order: 3; }
 
   /* Keeps the wordmark lockup on two lines rather than three */
   .wordmark__kind { letter-spacing: 0.06em; }
@@ -1589,7 +1556,8 @@ a.contact-item__value:hover { color: var(--color-accent); }
   .urgent__inner .btn { justify-content: space-between; }
   .section-head { margin-bottom: var(--space-10); }
   .nav__overlay-link { font-size: var(--text-2xl); }
-  /* 16px floor on the smallest viewports */
+  /* Nothing on a phone drops below 16px, labels and meta included */
+  :root { --text-sm: 1rem; }
   body { font-size: 1rem; }
   /* dt and dd would otherwise sit side by side and force the card wider
      than the viewport */

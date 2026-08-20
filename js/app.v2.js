@@ -24,23 +24,8 @@
    * 1 · NAV
    * ================================================================== */
 
-  var nav = document.getElementById('siteNav');
   var toggle = document.getElementById('navToggle');
   var overlay = document.getElementById('navOverlay');
-
-  if (nav) {
-    // Sentinel at the top of the document. When it scrolls out of view the
-    // pill deepens its shadow. Using IntersectionObserver rather than a
-    // scroll listener keeps the main thread free.
-    var sentinel = document.createElement('div');
-    sentinel.setAttribute('aria-hidden', 'true');
-    sentinel.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:1px;';
-    document.body.prepend(sentinel);
-
-    new IntersectionObserver(function (entries) {
-      nav.setAttribute('data-scrolled', String(!entries[0].isIntersecting));
-    }).observe(sentinel);
-  }
 
   function setNav(open) {
     if (!toggle || !overlay) return;
