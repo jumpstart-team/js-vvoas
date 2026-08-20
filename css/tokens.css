@@ -1,0 +1,142 @@
+/* Hallmark · macrostructure: Editorial Split · tone: editorial-luxury · anchor hue: pine 158
+ * theme: custom (vibe: "warm bone paper, deep pine, surgical calm")
+ *   paper  oklch(97.5% 0.008 85)   band: light
+ *   accent oklch(38%   0.062 158)  hue:  chromatic-other (pine)
+ *   display: Newsreader (roman-serif) · body: Instrument Sans
+ * nav: floating pill · footer: statement + NAP
+ * pre-emit critique: P5 H5 E5 S5 R4 V5
+ *
+ * Design token system for Valley Village Oral Surgery Associates.
+ * Every colour and font in main.css references a token from this file by name.
+ * Rebranding the site = editing this file only.
+ */
+
+:root {
+  /* ---------------------------------------------------------------
+     COLOUR — every value maps to a named semantic role.
+     Roles: paper (surfaces), ink (text), accent (brand), status.
+     --------------------------------------------------------------- */
+
+  /* Surfaces, lightest to deepest */
+  --color-paper:        oklch(97.5% 0.008 85);   /* page ground, warm bone */
+  --color-paper-raised: oklch(94.8% 0.012 82);   /* cards sitting on paper */
+  --color-paper-sunk:   oklch(91.5% 0.014 80);   /* inset wells, input fields */
+  --color-paper-edge:   oklch(87%   0.016 80);   /* hairline enclosure edges */
+
+  /* Dark surfaces — used for the two full-bleed contrast bands */
+  --color-canvas:       oklch(24%   0.028 158);  /* deep pine-black band */
+  --color-canvas-raised:oklch(29%   0.030 158);  /* cards inside a dark band */
+  --color-canvas-edge:  oklch(36%   0.030 158);
+
+  /* Text, darkest to lightest. All verified >= 4.5:1 on --color-paper. */
+  --color-ink:          oklch(21%   0.018 70);   /* headings, primary text */
+  --color-ink-secondary:oklch(37%   0.016 72);   /* body copy at length */
+  --color-ink-muted:    oklch(45%   0.014 72);   /* captions, labels, meta */
+
+  /* Text on dark canvas. All verified >= 4.5:1 on --color-canvas. */
+  --color-ink-inverse:      oklch(96%  0.010 90);
+  --color-ink-inverse-muted:oklch(79%  0.014 120);
+
+  /* Brand accent */
+  --color-accent:       oklch(38%   0.062 158);  /* deep pine — links, marks */
+  --color-accent-deep:  oklch(30%   0.055 158);  /* pressed / hover state */
+  --color-accent-soft:  oklch(93%   0.022 158);  /* tinted wells */
+  --color-accent-on:    oklch(98%   0.006 158);  /* text on accent fill */
+
+  /* Status roles. Red and green keep conventional meanings, so the pine
+     brand accent is never used to signal success — confirmation is
+     communicated with ink + a mark, not with colour alone. */
+  --color-error:        oklch(47%   0.170 27);
+  --color-error-soft:   oklch(95%   0.030 27);
+  --color-focus:        oklch(48%   0.150 250); /* distinct from brand pine */
+
+  /* ---------------------------------------------------------------
+     TYPE — two families, one declared scale. No arbitrary px sizes.
+     Floor is 15px desktop / 16px mobile; nothing in the scale is smaller.
+     --------------------------------------------------------------- */
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-body: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --text-sm:    0.9375rem;  /* 15px — labels, meta. Never smaller. */
+  --text-base:  1.0625rem;  /* 17px — default body */
+  --text-md:    1.1875rem;  /* 19px — lead paragraphs */
+  --text-lg:    1.375rem;   /* 22px */
+  --text-xl:    1.6875rem;  /* 27px */
+  --text-2xl:   2.125rem;   /* 34px */
+  --text-3xl:   2.75rem;    /* 44px */
+  --text-4xl:   3.625rem;   /* 58px */
+  --text-5xl:   4.75rem;    /* 76px */
+
+  /* Fluid display sizes. Lower bound respects 320px viewports. */
+  --text-display:   clamp(2.625rem, 1.35rem + 6.2vw, 5.75rem);
+  --text-display-s: clamp(2.125rem, 1.25rem + 4.2vw, 3.875rem);
+
+  --leading-tight: 1.04;
+  --leading-snug:  1.22;
+  --leading-body:  1.62;
+
+  --measure: 34rem;      /* ~68 characters of body copy */
+  --measure-tight: 27rem;
+
+  /* ---------------------------------------------------------------
+     SPACE — 4pt base unit. Every margin, padding and gap is a multiple.
+     --------------------------------------------------------------- */
+  --space-1:  0.25rem;   /*  4px */
+  --space-2:  0.5rem;    /*  8px */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-5:  1.25rem;   /* 20px */
+  --space-6:  1.5rem;    /* 24px */
+  --space-8:  2rem;      /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-20: 5rem;      /* 80px */
+  --space-24: 6rem;      /* 96px */
+  --space-32: 8rem;      /* 128px */
+  --space-40: 10rem;     /* 160px */
+
+  /* Section rhythm — heavy by intent, tightened on small viewports */
+  --space-section: clamp(var(--space-20), 11vw, var(--space-40));
+
+  --shell-max: 78rem;
+  --shell-pad: clamp(var(--space-5), 4.5vw, var(--space-16));
+
+  /* ---------------------------------------------------------------
+     RADIUS — varied by role, not one value applied everywhere.
+     --------------------------------------------------------------- */
+  --radius-sm:   0.5rem;    /* tags, small marks */
+  --radius-md:   0.875rem;  /* inputs, inner cores */
+  --radius-lg:   1.75rem;   /* content cards */
+  --radius-xl:   2.25rem;   /* outer enclosure shells */
+  --radius-pill: 62.4375rem;
+
+  /* ---------------------------------------------------------------
+     ELEVATION — exactly three levels, one treatment each.
+     --------------------------------------------------------------- */
+  --elev-surface: none;
+  --elev-raised:  0 1px 2px oklch(21% 0.018 70 / 0.04),
+                  0 12px 32px -12px oklch(21% 0.018 70 / 0.10);
+  --elev-overlay: 0 2px 6px oklch(21% 0.018 70 / 0.06),
+                  0 32px 64px -24px oklch(21% 0.018 70 / 0.22);
+
+  /* Hairline enclosure — a structural edge, never a decorative stripe */
+  --rule-hairline: 1px solid var(--color-paper-edge);
+  --rule-inverse:  1px solid var(--color-canvas-edge);
+
+  /* ---------------------------------------------------------------
+     MOTION — three named easings. The browser default `ease` is unused.
+     --------------------------------------------------------------- */
+  --ease-out:    cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --dur-fast: 160ms;
+  --dur-mid:  320ms;
+  --dur-slow: 720ms;
+
+  /* Systemic layers only — no arbitrary z-index values in main.css */
+  --z-base: 1;
+  --z-sticky: 100;
+  --z-overlay: 200;
+}
