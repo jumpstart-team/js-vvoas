@@ -304,8 +304,8 @@ summary:focus-visible {
   height: 1.6rem;
   flex: none;
 }
-.wordmark__mark-sage  { fill: var(--color-brand-sage); }
-.wordmark__mark-olive { fill: var(--color-accent); }
+.wordmark__mark-sage  { fill: var(--logo-sage); }
+.wordmark__mark-olive { fill: var(--logo-olive); }
 .wordmark__type { display: grid; gap: 2px; }
 .wordmark__name {
   font-family: var(--font-display);
@@ -1062,7 +1062,7 @@ a.contact-item__value:hover { color: var(--color-accent); }
   gap: var(--space-3);
   margin-bottom: var(--space-2);
 }
-.footer__lockup .wordmark__mark { width: 2rem; height: 1.85rem; }
+.footer__lockup .wordmark__mark { width: 2rem; height: 2.15rem; }
 .footer__lockup .wordmark__name { color: var(--color-ink-inverse); font-size: var(--text-lg); }
 .footer__lockup .wordmark__kind { color: var(--color-ink-inverse-muted); }
 /* The olive half of the mark disappears against the olive band, so on dark
@@ -1159,6 +1159,186 @@ a.contact-item__value:hover { color: var(--color-accent); }
 
 .qa__a { padding: 0 var(--space-6) var(--space-6); max-width: var(--measure); }
 .qa__a p { font-size: var(--text-base); line-height: 1.6; color: var(--color-ink-secondary); }
+
+/* ============================================================
+   14e · NUMBERED SECTION MARKERS
+   Requested pattern, taken from the reference board. It deliberately
+   departs from the house rule against eyebrows, leading punctuation and
+   zero-padded numerals; the client asked for this specific look, and the
+   marker is stacked above its heading rather than set beside it.
+   ============================================================ */
+
+.marker {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-muted);
+  margin-bottom: var(--space-5);
+}
+.marker__n { color: var(--color-accent); font-variant-numeric: tabular-nums; }
+/* On the dark band the accent has almost no contrast, so the marker
+   switches to the light pair. */
+.band-dark .marker { color: var(--color-ink-inverse-muted); }
+.band-dark .marker__n { color: var(--color-brand-sage); }
+.band-dark .marker__rule { background-color: var(--color-canvas-edge); }
+
+.marker__rule {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  margin: 0 var(--space-2) 0.25em;
+  background-color: var(--color-brand-grey);
+  vertical-align: middle;
+}
+
+/* ============================================================
+   14f · ALTERNATING BANDS
+   The reference cycles its ground between three light tones so adjacent
+   sections separate without rules. Mapped onto the supplied palette.
+   ============================================================ */
+
+.band-tint { background-color: var(--color-paper-raised); }
+.band-deep { background-color: var(--color-paper-sunk); }
+
+/* ============================================================
+   14g · TWO-UP PANELS, ONE LIGHT ONE DARK
+   ============================================================ */
+
+.panels {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr));
+}
+
+.panel {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+  padding: clamp(var(--space-8), calc(52 * var(--fluid)), var(--space-16));
+  border-radius: var(--radius-xl);
+  background-color: var(--color-paper-sunk);
+  min-height: clamp(15rem, calc(300 * var(--fluid)), 20rem);
+}
+.panel--dark { background-color: var(--color-canvas); color: var(--color-ink-inverse-muted); }
+.panel--dark .panel__figure,
+.panel--dark .panel__title { color: var(--color-ink-inverse); }
+
+/* `.panel p` below would otherwise out-specify these two, so both carry the
+   panel class as well. */
+.panel .panel__figure {
+  font-family: var(--font-display);
+  font-size: clamp(3.25rem, calc(76 * var(--fluid)), 5rem);
+  line-height: 0.86;
+  letter-spacing: -0.03em;
+  color: var(--color-accent);
+  max-width: none;
+}
+.panel .panel__title {
+  font-size: clamp(var(--text-lg), calc(26 * var(--fluid)), var(--text-xl));
+  font-family: var(--font-display);
+  color: var(--color-ink);
+  max-width: none;
+}
+.panel p { font-size: var(--text-base); line-height: 1.55; max-width: 34ch; }
+.panel--dark p { color: var(--color-ink-inverse-muted); }
+.panel--dark .panel__figure { color: var(--color-brand-sage); }
+/* placed after `.panel .panel__title`, which carries the same specificity
+   and would otherwise leave this title dark on a dark ground */
+.panel.panel--dark .panel__title { color: var(--color-ink-inverse); }
+
+/* a mark in the panel corner, echoing the reference's sparkle */
+.panel { position: relative; overflow: hidden; }
+.panel__mark {
+  position: absolute;
+  top: clamp(var(--space-6), 3vw, var(--space-10));
+  right: clamp(var(--space-6), 3vw, var(--space-10));
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-brand-sage);
+  opacity: 0.9;
+}
+
+/* ============================================================
+   14h · CIRCULAR BADGE
+   ============================================================ */
+
+.badge-circle {
+  display: grid;
+  place-items: center;
+  width: clamp(8rem, calc(148 * var(--fluid)), 9.25rem);
+  height: clamp(8rem, calc(148 * var(--fluid)), 9.25rem);
+  flex: none;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-accent);
+  color: var(--color-accent-on);
+  text-decoration: none;
+  position: relative;
+  transition: transform var(--dur-mid) var(--ease-out);
+}
+.badge-circle:hover { transform: scale(1.04); }
+.badge-circle { overflow: hidden; }
+.badge-circle__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: badge-spin 22s linear infinite;
+}
+.badge-circle__ring text {
+  font-family: var(--font-body);
+  /* letter-spacing is left to textLength, which distributes the string
+     across the full 232-unit circumference of the arc */
+  font-size: 10px;
+  font-weight: 600;
+  fill: currentColor;
+  text-transform: uppercase;
+}
+.badge-circle__arrow { width: 1.5rem; height: 1.5rem; }
+@keyframes badge-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .badge-circle__ring { animation: none; }
+}
+
+/* ============================================================
+   14i · FOOTER TOP ROW
+   ============================================================ */
+
+.footer__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: var(--space-16);
+}
+.footer__email {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-lg), calc(30 * var(--fluid)), var(--text-2xl));
+  color: var(--color-ink-inverse);
+  text-decoration: none;
+}
+.footer__email:hover { color: var(--color-brand-sage); }
+
+.footer__social { display: flex; gap: var(--space-3); }
+.footer__social a {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-canvas-raised);
+  color: var(--color-ink-inverse);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.footer__social a:hover { transform: translateY(-2px); }
+.footer__social svg { width: 1.0625rem; height: 1.0625rem; }
+
+@media (max-width: 40rem) {
+  .panel { min-height: 0; }
+  .marker { margin-bottom: var(--space-4); }
+}
 
 /* ============================================================
    15 · SCROLL REVEAL — driven by IntersectionObserver in main.js

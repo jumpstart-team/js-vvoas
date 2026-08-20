@@ -36,7 +36,15 @@
   /* Supplied, exact. Do not alter these four. */
   --color-paper:        #f7f7f1;   /* page ground */
   --color-paper-sunk:   #cdd2ca;   /* deepest light surface */
-  --color-brand-sage:   #8caeab;   /* logo chevron, marks and fills */
+  --color-brand-sage:   #8caeab;   /* supplied; marks and fills */
+
+  /* The logo mark itself, read straight out of the supplied vector file:
+     the PDF sets `0.545 0.682 0.667 rg` and `0.333 0.267 0.184 rg`.
+     Kept separate from the palette above so the mark is always exact.
+     The vector sage is one step off the supplied #8CAEAB, which is
+     imperceptible, but the mark uses its own value regardless. */
+  --logo-sage:  #8baeaa;
+  --logo-olive: #55442f;
   --color-brand-grey:   #9c9c9c;   /* quiet rules and marks */
 
   /* Derived surfaces, sitting between the supplied ground and sunk */

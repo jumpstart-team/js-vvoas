@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#f7f4ee"/>
-  <text x="32" y="44" text-anchor="middle"
-        font-family="Iowan Old Style, Georgia, serif" font-size="34" fill="#2f5c48">VV</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-9 -12 88.284 99.667">
+  <rect x="-9" y="-12" width="88.284" height="99.667" rx="14" fill="#f7f7f1"/>
+  <path fill="#55442f" d="M34.346 53.508 L0 14.18 L0 33.676 L33.36 74.319 C34.47 75.667 36.534 75.667 37.644 74.319 L70.284 33.676 L70.284 14.18 L36.658 53.508 C36.043 54.199 34.962 54.199 34.346 53.508 Z"/>
+  <path fill="#8baeaa" d="M34.985 25.806 L11.994 0 L11.994 16.072 L34.691 43.632 C35.111 44.142 35.893 44.142 36.313 43.632 L59.01 16.072 L59.01 0 L36.019 25.806 C35.744 26.115 35.26 26.115 34.985 25.806 Z"/>
 </svg>
