@@ -71,7 +71,7 @@ Once the new domain is chosen, three things need updating:
 ## Wiring up the appointment form
 
 The form validates fully and handles every state, but it does not have a
-destination yet. `FORM_ENDPOINT` at the top of `js/main.js` is empty, so
+destination yet. `FORM_ENDPOINT` at the top of `js/app.v2.js` is empty, so
 submitting a valid form tells the visitor to call instead of pretending the
 request went through.
 
@@ -97,35 +97,59 @@ exposure low.
 
 ## Rebranding or retheming
 
-Every colour, font, size, space and easing lives in `css/tokens.css`.
-`main.css` never hardcodes a value, it only references tokens by name. To
+Every colour, font, size, space and easing lives in `css/tokens.v2.css`.
+`main.v2.css` never hardcodes a value, it only references tokens by name. To
 change the look, edit that one file.
 
-The current system is the practice's own brand, not an invented one. Two
-colours were sampled from the pixels of the existing logo artwork:
+Four colours were supplied by the client and are kept **exact**:
 
-- **Sage** `#8caeab`, `oklch(72.5% 0.0373 189.7)` — the upper chevron
-- **Olive** `#544430`, `oklch(39.8% 0.0383 72.6)` — the lower chevron
+| Hex | Role | On the `#F7F7F1` ground |
+|---|---|---|
+| `#F7F7F1` | page ground | 1.00:1 |
+| `#CDD2CA` | pale sage-grey surface | 1.43:1 |
+| `#8CAEAB` | brand sage, the logo chevron | 2.23:1 |
+| `#9C9C9C` | neutral grey | 2.55:1 |
 
-plus `#3c3c3c` body ink, `#ecf1f3` pale wash and `#c40000` error from the old
-stylesheet, and white as the ground.
+Every one of them is light, so not one can legally carry text. They are used
+as grounds, fills and marks, and each text step is derived by darkening along
+the identical hue. The identity is the hue, not the lightness.
 
-Neither brand colour can carry text. `#8caeab` is 2.40:1 on white, and the old
-site set every heading and link in `#9c9c9c` at 2.75:1, both well under the
-4.5:1 floor. So the two logo colours are kept **exact** for marks and fills,
-and the text steps are derived by darkening along the identical hue. The
-identity is the hue, not the lightness.
+`--color-ink-muted` sits at L45% specifically so it clears 4.5:1 on `#CDD2CA`,
+the darkest light surface it is ever set on. At the more obvious L51% it read
+3.74:1 there and failed.
 
-- **Display** Newsreader
-- **Body** Instrument Sans
+- **Display** Newsreader. **Body** Instrument Sans. Both self-hosted.
 - **Spacing** 4pt base unit
-- **Type scale** 15 / 17 / 19 / 22 / 27 / 34 / 44 / 58 / 76 px, plus two
-  fluid display sizes
+- **Type scale** 15 / 17 / 19 / 22 / 27 / 34 / 44 / 58 / 76 px, plus fluid
+  display sizes authored as "N pixels on a 1440 canvas" through
+  `calc(N * var(--fluid))` and clamped at both ends
 
-All twenty-four foreground and background pairings were checked against
-WCAG AA and all pass. The textured sedation band was checked a second way,
-by sampling the rendered pixels underneath each block of text: the real
-background there is `#312a1f`, giving between 8.4:1 and 13.2:1.
+All 27 foreground and background pairings were computed against WCAG AA and
+all pass. Body text runs 5.35:1 to 15.09:1.
+
+## Layout DNA
+
+The section rhythm was studied from
+[aventuradentalarts.com](https://aventuradentalarts.com), an Awwwards Site of
+the Day from March 2026, at the client's request and **for flow and layout
+only**. None of its colour, typography, imagery or copy was taken, and it is
+a real competing practice, so nothing about it should be cloned.
+
+What transferred:
+
+- Ratio-based fluid scaling off a 1440 design canvas, their
+  `calc(N/var(--viewport)*100vw)` technique
+- The quintic ease, `cubic-bezier(.22, 1, .36, 1)`
+- Larger section blocks, up to 13.5rem
+- Panels that ride up over the section above them with a rounded top edge
+- A slide-based proof section. The reference uses Swiper; this one is built on
+  native CSS scroll-snap, so it ships no library, works with JavaScript
+  disabled, and stays keyboard scrollable.
+
+One thing deliberately not taken: the reference is dark-dominant with a gold
+accent, which suits elective cosmetic dentistry. This practice treats referred
+patients who are often in pain, and a luxury register reads as "expensive" to
+someone already worried about cost.
 
 ## Content notes
 

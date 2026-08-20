@@ -1,56 +1,73 @@
-/* Hallmark · macrostructure: Editorial Split · tone: editorial-luxury
- * theme: practice brand (sage 190 + olive 73, both sampled from the logo)
- *   paper  oklch(100% 0 0)          band: light
- *   accent oklch(44% 0.054 189.7)   hue:  chromatic-other (sage)
+/* Hallmark · macrostructure: Editorial Split · tone: editorial-restrained
+ * theme: client-supplied palette
+ *   paper  #F7F7F1   band: light
+ *   accent sage 189.7, derived dark from #8CAEAB
  *   display: Newsreader (roman-serif) · body: Instrument Sans
- * nav: floating pill · footer: statement + NAP
+ * layout DNA studied from aventuradentalarts.com (Awwwards SOTD, Mar 2026):
+ *   flow and layout only. None of its colour, type or copy was taken.
+ *   What transferred: ratio-based fluid scaling off a 1440 design canvas,
+ *   the quintic ease, generous section blocks, rounded panels that ride
+ *   over the section above, and a slide-based proof section.
  *
  * Design token system for Valley Village Oral Surgery Associates.
- * Every colour and font in main.css references a token from this file by
+ * Every colour and font in main.v2.css references a token from this file by
  * name. Retheming the site is an edit to this file alone.
  */
 
 :root {
   /* ---------------------------------------------------------------
      COLOUR
-     Every value below is lifted from the practice's own brand, or
-     derived from it along the same hue.
 
-     Two source colours, sampled from the pixels of the practice logo:
-       sage chevron   #8caeab   oklch(72.5% 0.0373 189.7)
-       olive chevron  #544430   oklch(39.8% 0.0383 72.6)
-     plus #3c3c3c body ink, #ecf1f3 pale wash and #c40000 error from the
-     old stylesheet.
+     Four colours supplied by the client:
+       #F7F7F1  ground
+       #CDD2CA  pale sage-grey
+       #8CAEAB  brand sage, and the upper chevron of the logo
+       #9C9C9C  neutral grey
 
-     The brand colours themselves are too light to carry text: #8caeab
-     is 2.40:1 on white and the old site set every heading and link in
-     #9c9c9c at 2.75:1, well under the 4.5:1 floor. So the two logo
-     colours are kept exact for marks and fills, and text steps are
-     derived by darkening along the identical hue. The identity is the
-     hue, not the lightness.
+     All four are light: measured against the #F7F7F1 ground they run
+     1.00, 1.43, 2.23 and 2.55 to one, so not one of them can legally
+     carry text. They are kept EXACT as grounds, fills and marks, and
+     every text step is derived by darkening along the identical hue,
+     so the identity is the hue rather than the lightness.
+
+     27 pairings were computed against WCAG AA. All pass.
      --------------------------------------------------------------- */
 
-  --color-paper: oklch(100.0% 0.0000 89.9);         /* page ground; matches the practice stylesheet */
-  --color-paper-raised: oklch(97.0% 0.0112 189.7);  /* cards on paper, a breath of the sage */
-  --color-paper-sunk: oklch(94.2% 0.0157 189.7);    /* inset wells, input fields */
-  --color-paper-edge: oklch(89.0% 0.0205 189.7);    /* hairline enclosure edges */
-  --color-canvas: oklch(25.0% 0.0276 72.6);         /* deep band, the olive half of the chevron */
-  --color-canvas-raised: oklch(30.0% 0.0261 72.6);  /* cards inside a dark band */
-  --color-canvas-edge: oklch(38.0% 0.0245 72.6);    /* hairline on dark */
-  --color-ink: oklch(30.0% 0.0238 72.6);            /* headings and primary text */
-  --color-ink-secondary: oklch(43.0% 0.0161 72.6);  /* body copy at length */
-  --color-ink-muted: oklch(52.0% 0.0115 72.6);      /* captions, labels, metadata */
-  --color-ink-inverse: oklch(97.0% 0.0082 189.7);   /* text on the dark band */
-  --color-ink-inverse-muted: oklch(83.0% 0.0127 189.7);/* secondary text on the dark band */
-  --color-brand-sage: oklch(72.5% 0.0373 189.7);    /* the logo sage, exact. Marks and fills only */
-  --color-brand-olive: oklch(39.8% 0.0383 72.6);    /* the logo olive, exact. Marks only */
-  --color-accent: oklch(44.0% 0.0541 189.7);        /* links and button fills; the sage carried to a readable depth */
-  --color-accent-deep: oklch(36.0% 0.0541 189.7);   /* hover and pressed */
-  --color-accent-soft: oklch(93.5% 0.0110 182.9);   /* tinted wells */
-  --color-accent-on: oklch(100.0% 0.0000 89.9);     /* text on an accent fill */
-  --color-error: oklch(51.5% 0.2114 29.2);          /* exact, from the practice stylesheet */
-  --color-error-soft: oklch(95.1% 0.0185 17.5);     /* error well */
-  --color-focus: oklch(48.3% 0.1461 252.3);         /* focus ring; deliberately outside the brand hues */
+  /* Supplied, exact. Do not alter these four. */
+  --color-paper:        #f7f7f1;   /* page ground */
+  --color-paper-sunk:   #cdd2ca;   /* deepest light surface */
+  --color-brand-sage:   #8caeab;   /* logo chevron, marks and fills */
+  --color-brand-grey:   #9c9c9c;   /* quiet rules and marks */
+
+  /* Derived surfaces, sitting between the supplied ground and sunk */
+  --color-paper-raised: #eef1ed;
+  --color-paper-edge:   #d9ded7;
+
+  /* Text. Derived along the neutral hue of #9C9C9C.
+     ink-muted sits at L45% so it clears 4.5:1 on #CDD2CA, the darkest
+     light surface it is ever set on. */
+  --color-ink:           #21201e;  /* 15.09:1 on paper */
+  --color-ink-secondary: #4b4a48;  /*  8.21:1 on paper */
+  --color-ink-muted:     #565553;  /*  6.92:1 on paper, 4.84:1 on sunk */
+
+  /* Accent. Derived along the #8CAEAB hue, darkened until it carries text. */
+  --color-accent:      #2d615d;    /* 6.58:1 on paper */
+  --color-accent-deep: #0c4542;    /* pressed and hover */
+  --color-accent-soft: #d0e5e3;    /* tinted wells */
+  --color-accent-on:   #f7f7f1;    /* text on an accent fill */
+
+  /* Dark bands, same sage hue taken down */
+  --color-canvas:        #072624;
+  --color-canvas-raised: #183331;
+  --color-canvas-edge:   #314b49;
+  --color-ink-inverse:       #ebf4f3;
+  --color-ink-inverse-muted: #b4c1c0;
+
+  /* Status. Red keeps its conventional meaning, so the sage brand accent
+     is never used to signal success. */
+  --color-error:      #c40000;
+  --color-error-soft: #fbeaea;
+  --color-focus:      #2855ad;   /* distinct from the sage brand hue */
 
   /* ---------------------------------------------------------------
      TYPE — two families, one declared scale. No arbitrary px sizes.
@@ -99,7 +116,14 @@
   --space-40: 10rem;     /* 160px */
 
   /* Section rhythm — heavy by intent, tightened on small viewports */
-  --space-section: clamp(var(--space-20), 11vw, var(--space-40));
+  /* Ratio-based scaling, studied from the reference. Every fluid value is
+     authored as "N pixels on a 1440 canvas" and scales with the viewport,
+     clamped at both ends so it never runs away on a wide monitor. */
+  --viewport: 1440;
+  --fluid: calc(100vw / var(--viewport));
+
+  --space-section: clamp(var(--space-24), calc(168 * var(--fluid)), 13.5rem);
+  --space-block:   clamp(var(--space-16), calc(112 * var(--fluid)), 9.5rem);
 
   --shell-max: 78rem;
   --shell-pad: clamp(var(--space-5), 4.5vw, var(--space-16));
@@ -110,7 +134,8 @@
   --radius-sm:   0.5rem;    /* tags, small marks */
   --radius-md:   0.875rem;  /* inputs, inner cores */
   --radius-lg:   1.75rem;   /* content cards */
-  --radius-xl:   2.25rem;   /* outer enclosure shells */
+  --radius-xl:   2.25rem;
+  --radius-panel: 2.5rem;   /* rounded top on a panel that rides over the section above */   /* outer enclosure shells */
   --radius-pill: 62.4375rem;
 
   /* ---------------------------------------------------------------
@@ -129,13 +154,14 @@
   /* ---------------------------------------------------------------
      MOTION — three named easings. The browser default `ease` is unused.
      --------------------------------------------------------------- */
-  --ease-out:    cubic-bezier(0.32, 0.72, 0, 1);
+  /* quintic ease, the reference's --ease-out-quint */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 
   --dur-fast: 160ms;
   --dur-mid:  320ms;
-  --dur-slow: 720ms;
+  --dur-slow: 900ms;
 
   /* Systemic layers only — no arbitrary z-index values in main.css */
   --z-base: 1;

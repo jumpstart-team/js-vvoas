@@ -162,6 +162,17 @@ summary:focus-visible {
   background-color: var(--color-canvas);
   color: var(--color-ink-inverse-muted);
 }
+
+/* A panel rides up over the section above it, so the two overlap rather
+   than butt together. The lift is a margin rather than a transform because
+   the following section has to reflow around it. */
+.panel-lift {
+  position: relative;
+  z-index: var(--z-base);
+  margin-top: calc(var(--space-block) * -0.42);
+  border-radius: var(--radius-panel) var(--radius-panel) 0 0;
+}
+.panel-lift + .panel-lift { margin-top: calc(var(--space-block) * -0.42); }
 .band-dark h2,
 .band-dark h3,
 .band-dark .display { color: var(--color-ink-inverse); }
@@ -294,7 +305,7 @@ summary:focus-visible {
   flex: none;
 }
 .wordmark__mark-sage  { fill: var(--color-brand-sage); }
-.wordmark__mark-olive { fill: var(--color-brand-olive); }
+.wordmark__mark-olive { fill: var(--color-accent); }
 .wordmark__type { display: grid; gap: 2px; }
 .wordmark__name {
   font-family: var(--font-display);
@@ -449,9 +460,10 @@ body[data-nav-open="true"] { overflow: hidden; }
 .hero__aside     { grid-column: 2; grid-row: 1 / span 2; }
 
 .hero__display {
-  font-size: var(--text-display);
+  /* authored at 116px on the 1440 canvas, clamped at both ends */
+  font-size: clamp(2.5rem, calc(84 * var(--fluid)), 5.75rem);
   line-height: 0.98;
-  letter-spacing: -0.032em;
+  letter-spacing: -0.03em;
 }
 
 .hero__proof {
@@ -679,10 +691,57 @@ body[data-nav-open="true"] { overflow: hidden; }
    11 · TESTIMONIALS
    ============================================================ */
 
+.quotes__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-8);
+  margin-bottom: var(--space-10);
+}
+
+.quotes__controls { display: flex; gap: var(--space-3); flex: none; }
+
+.quotes__btn {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-paper-sunk);
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-out),
+              opacity var(--dur-fast) var(--ease-out);
+}
+.quotes__btn svg { width: 1rem; height: 1rem; }
+.quotes__btn:hover { transform: scale(1.06); }
+.quotes__btn:active { transform: scale(0.95); }
+.quotes__btn[disabled] { opacity: 0.35; cursor: not-allowed; transform: none; }
+
 .quotes {
   display: grid;
-  gap: var(--space-6);
-  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+  grid-auto-flow: column;
+  /* A fixed track width, not a minmax with a zero floor: inside an
+     overflow-x container a zero floor lets every track collapse to fit
+     the box instead of extending past it. */
+  grid-auto-columns: min(21rem, 82vw);
+  gap: var(--space-5);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  /* bleed to the viewport edge so a card is visibly cut off, which reads
+     as "there is more" without needing a scrollbar */
+  margin-inline: calc(var(--shell-pad) * -1);
+  padding-inline: var(--shell-pad);
+  padding-block: var(--space-2);
+}
+.quotes::-webkit-scrollbar { display: none; }
+.quotes > * { scroll-snap-align: start; }
+
+@media (min-width: 64rem) {
+  .quotes { grid-auto-columns: 25rem; }
 }
 .quote {
   display: grid;
@@ -1129,21 +1188,20 @@ a.contact-item__value:hover { color: var(--color-accent); }
   .wordmark__type { white-space: nowrap; }
 }
 
-/* Between a small laptop and a wide one the pill is at its tightest: five
-   links, a button and the lockup. The lockup drops its second line there
-   rather than wrapping. Below 60rem the pill sheds its links entirely and
-   the full lockup returns. */
-@media (min-width: 60.0625rem) and (max-width: 80rem) {
-  .wordmark__kind { display: none; }
-}
-
-@media (max-width: 72rem) {
+/* The lockup keeps both lines at every width; the number yields instead. */
+@media (max-width: 80rem) {
   .nav__pill { gap: var(--space-4); padding-left: var(--space-5); }
   .nav__links { gap: var(--space-5); }
   /* The number is redundant here: it appears in the booking card, the
      emergency band, the FAQ, the contact block and the footer, and the
      primary action is the request button. */
   .nav__phone { display: none; }
+}
+
+/* Tightest the full pill gets before it sheds its links at 60rem. */
+@media (max-width: 66rem) {
+  .nav__links { gap: var(--space-4); }
+  .nav__pill { gap: var(--space-3); padding-left: var(--space-4); }
 }
 
 @media (max-width: 60rem) {

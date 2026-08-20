@@ -402,7 +402,7 @@
 </section>
 
 <!-- ============ COMFORT ============ -->
-<section class="section band-dark comfort" id="comfort">
+<section class="section band-dark comfort panel-lift" id="comfort">
   <div class="shell">
     <div class="section-head" data-reveal>
       <h2 class="heading-1">Anesthesia, planned rather than assumed</h2>
@@ -433,12 +433,22 @@
 <!-- ============ TESTIMONIALS ============ -->
 <section class="section" id="reviews">
   <div class="shell">
-    <div class="section-head" data-reveal>
-      <h2 class="heading-1">What patients say afterward</h2>
-      <p class="lead">Reviews left on Google by patients who came in for the procedures above.</p>
+    <div class="quotes__head" data-reveal>
+      <div class="section-head" style="margin-bottom:0">
+        <h2 class="heading-1">What patients say afterward</h2>
+        <p class="lead">Reviews left on Google by patients who came in for the procedures above.</p>
+      </div>
+      <div class="quotes__controls">
+        <button class="quotes__btn" type="button" data-quotes-prev aria-label="Previous reviews">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 2 4 8l6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="quotes__btn" type="button" data-quotes-next aria-label="More reviews">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 2l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
     </div>
 
-    <div class="quotes">
+    <div class="quotes" id="quotesTrack" tabindex="0" role="region" aria-label="Patient reviews, scrollable">
       <figure class="quote" data-reveal>
         <blockquote class="quote__text">&ldquo;Absolutely incredible experience. I have never had a doctor be so available and helpful after a surgery.&rdquo;</blockquote>
         <figcaption class="quote__by"><strong>Sallie</strong>, on Google</figcaption>
@@ -694,7 +704,7 @@
 </main>
 
 <!-- ============ FOOTER ============ -->
-<footer class="footer">
+<footer class="footer panel-lift">
   <div class="shell">
     <p class="footer__statement" data-reveal>Careful surgery, and the time it requires.</p>
 

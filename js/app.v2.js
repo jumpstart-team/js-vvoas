@@ -239,7 +239,54 @@
   }
 
   /* ==================================================================
-   * 4 · FOOTER YEAR
+   * 4 · REVIEW SLIDE TRACK
+   * A native scroll-snap container, so it keeps working with JavaScript
+   * off and stays keyboard scrollable. The buttons only add convenience.
+   * ================================================================== */
+
+  var track = document.getElementById('quotesTrack');
+  var prevBtn = document.querySelector('[data-quotes-prev]');
+  var nextBtn = document.querySelector('[data-quotes-next]');
+
+  if (track && prevBtn && nextBtn) {
+    function pageWidth() {
+      var card = track.firstElementChild;
+      if (!card) return track.clientWidth;
+      var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      return card.getBoundingClientRect().width + gap;
+    }
+
+    function syncButtons() {
+      var max = track.scrollWidth - track.clientWidth - 2;
+      prevBtn.disabled = track.scrollLeft <= 2;
+      nextBtn.disabled = track.scrollLeft >= max;
+    }
+
+    function nudge(dir) {
+      track.scrollBy({
+        left: pageWidth() * dir,
+        behavior: reduceMotion ? 'auto' : 'smooth'
+      });
+    }
+
+    prevBtn.addEventListener('click', function () { nudge(-1); });
+    nextBtn.addEventListener('click', function () { nudge(1); });
+
+    // scroll fires often, so read state on the next frame rather than
+    // on every tick
+    var queued = false;
+    track.addEventListener('scroll', function () {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () { queued = false; syncButtons(); });
+    }, { passive: true });
+
+    window.addEventListener('resize', syncButtons, { passive: true });
+    syncButtons();
+  }
+
+  /* ==================================================================
+   * 5 · FOOTER YEAR
    * ================================================================== */
 
   var year = document.getElementById('year');
