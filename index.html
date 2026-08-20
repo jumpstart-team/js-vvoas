@@ -22,7 +22,7 @@
 
 <link rel="preload" href="fonts/newsreader-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/instrument-sans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/main.v2.css">
 <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body>
@@ -35,7 +35,7 @@
     <a class="wordmark" href="#top">
       <!-- The practice chevron, redrawn from the logo artwork so it stays
            crisp at any size. Colours are the two logo tokens, exact. -->
-      <svg class="wordmark__mark" viewBox="0 0 120 112" aria-hidden="true" focusable="false">
+      <svg class="wordmark__mark" width="28" height="26" viewBox="0 0 120 112" aria-hidden="true" focusable="false">
         <polygon class="wordmark__mark-olive" points="8,40 60,84 112,40 112,66 60,110 8,66"/>
         <polygon class="wordmark__mark-sage"  points="30,8 60,48 90,8 90,34 60,74 30,34"/>
       </svg>
@@ -50,6 +50,7 @@
       <a class="nav__link" href="#surgeons">Surgeons</a>
       <a class="nav__link" href="#comfort">Anesthesia</a>
       <a class="nav__link" href="#visit">First visit</a>
+      <a class="nav__link" href="#faq">FAQ</a>
     </nav>
 
     <a class="nav__phone" href="tel:+14105819008">(410)&nbsp;581-9008</a>
@@ -77,6 +78,7 @@
   <a class="nav__overlay-link" href="#surgeons">Surgeons</a>
   <a class="nav__overlay-link" href="#comfort">Anesthesia</a>
   <a class="nav__overlay-link" href="#visit">First visit</a>
+  <a class="nav__overlay-link" href="#faq">FAQ</a>
   <a class="nav__overlay-link" href="tel:+14105819008">(410) 581-9008</a>
 </div>
 
@@ -102,17 +104,15 @@
         <h2 class="heading-3">Arrange a consultation</h2>
 
         <div class="booking__actions">
-          <a class="btn" href="tel:+14105819008">
-            Call (410) 581-9008
-            <span class="btn__mark" aria-hidden="true">
-              <svg viewBox="0 0 16 16" fill="none"><path d="M5.2 2.5 6.8 5.4 5.3 6.9a8.4 8.4 0 0 0 3.8 3.8l1.5-1.5 2.9 1.6v2.4c0 .5-.4.9-.9.8A11.6 11.6 0 0 1 2 3.1c0-.5.3-.9.8-.9h2.4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
-            </span>
-          </a>
-          <a class="btn btn--secondary" href="#request">
+          <a class="btn" href="#request">
             Request an appointment
             <span class="btn__mark" aria-hidden="true">
-              <svg viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              <svg viewBox="0 0 16 16" fill="none"><path d="M3 13 13 3M6 3h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
+          </a>
+          <a class="booking__phone" href="tel:+14105819008">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5.2 2.5 6.8 5.4 5.3 6.9a8.4 8.4 0 0 0 3.8 3.8l1.5-1.5 2.9 1.6v2.4c0 .5-.4.9-.9.8A11.6 11.6 0 0 1 2 3.1c0-.5.3-.9.8-.9h2.4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+            Or call (410) 581-9008
           </a>
         </div>
 
@@ -122,7 +122,8 @@
         </dl>
 
         <p class="booking__note">
-          If your dentist has referred you, bring the referral slip and any films they took.
+          Insurance is handled by the front desk, and CareCredit is accepted. If your dentist
+          has referred you, bring the referral slip and any films they took.
         </p>
       </div>
     </div>
@@ -184,7 +185,11 @@
   <div class="shell">
     <div class="section-head" data-reveal>
       <h2 class="heading-1">What we treat</h2>
-      <p class="lead">Most patients arrive on a referral. These are the procedures that referral is usually for.</p>
+      <p class="lead">
+        Waiting weeks in pain. A four-minute consultation. Nobody willing to say what it will
+        cost until afterward. That is what most people brace for, and it is not what patients
+        here describe. Below is what the referral is usually for.
+      </p>
     </div>
 
     <div class="services__groups">
@@ -251,12 +256,43 @@
   </div>
 </section>
 
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section steps" id="how">
+  <div class="shell">
+    <div class="section-head" data-reveal>
+      <h2 class="heading-1">How it goes</h2>
+    </div>
+
+    <ol class="steps__list">
+      <li class="step" data-reveal>
+        <span class="step__n" aria-hidden="true">1</span>
+        <h3 class="step__title">Ask for a time</h3>
+        <p>Send the request form or call. Tell the front desk what is going on, and whether a dentist referred you.</p>
+      </li>
+      <li class="step" data-reveal>
+        <span class="step__n" aria-hidden="true">2</span>
+        <h3 class="step__title">Consultation and a plan</h3>
+        <p>An examination, films if they are needed, and a plain account of the options, anesthesia included. Cost is discussed here, not after.</p>
+      </li>
+      <li class="step" data-reveal>
+        <span class="step__n" aria-hidden="true">3</span>
+        <h3 class="step__title">The procedure</h3>
+        <p>Occasionally the same day. More often scheduled, with instructions for before and after, and a call from your surgeon to follow.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
 <!-- ============ SURGEONS ============ -->
 <section class="section" id="surgeons">
   <div class="shell">
     <div class="section-head" data-reveal>
       <h2 class="heading-1">The surgeons</h2>
-      <p class="lead">Both are board certified. Both trained in hospitals, and both still teach.</p>
+      <p class="lead">
+        Dr. Awalt has described her approach as resting on trust, communication and compassion,
+        with the options explained plainly and safety ahead of everything else. That is the
+        practice she built, and the one Dr. Charnowitz joined.
+      </p>
     </div>
 
     <div class="surgeons__grid">
@@ -442,11 +478,6 @@
       </p>
     </div>
 
-    <figure class="visit__figure" data-reveal>
-      <img src="img/consult.webp" width="800" height="800" loading="lazy" decoding="async"
-           alt="A surgeon reviewing a panoramic dental x-ray on a tablet with a patient.">
-    </figure>
-
     <div class="logistics__grid">
       <div class="logistics__col" data-reveal>
         <h3>Bring with you</h3>
@@ -475,6 +506,63 @@
           <li>Ground floor, parking outside the door, and reachable by public transit</li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section faq" id="faq">
+  <div class="shell">
+    <div class="section-head" data-reveal>
+      <h2 class="heading-1">Questions people ask first</h2>
+      <p class="lead">If yours is not here, the front desk will answer it on the phone.</p>
+    </div>
+
+    <div class="faq__list" data-reveal>
+      <details class="qa">
+        <summary class="qa__q">Do I need a referral?</summary>
+        <div class="qa__a"><p>Most patients are sent by their general dentist or orthodontist. If you have a referral slip and films, bring them. You are welcome to call without one.</p></div>
+      </details>
+
+      <details class="qa">
+        <summary class="qa__q">Will it hurt?</summary>
+        <div class="qa__a"><p>Not during. Every procedure is done under anesthesia, and you choose the depth with your surgeon: local only, oral sedation, or fully asleep. Afterward you are given instructions and a number to call.</p></div>
+      </details>
+
+      <details class="qa">
+        <summary class="qa__q">What will it cost?</summary>
+        <div class="qa__a"><p>It depends on the procedure and your coverage, so the figure comes at the consultation rather than over the phone. The front desk handles insurance and billing and will go through it with you before anything is scheduled.</p></div>
+      </details>
+
+      <details class="qa">
+        <summary class="qa__q">How can I pay?</summary>
+        <div class="qa__a"><p>Credit cards, CareCredit, cash and personal checks. CareCredit lets the cost be spread over instalments.</p></div>
+      </details>
+
+      <details class="qa">
+        <summary class="qa__q">Can I drive myself home?</summary>
+        <div class="qa__a"><p>After local anesthetic, yes, the same as after a filling. After oral sedation or a general anesthetic, no: an adult has to stay during surgery and drive you home.</p></div>
+      </details>
+
+      <details class="qa">
+        <summary class="qa__q">How soon can I be seen?</summary>
+        <div class="qa__a"><p>Call and say what is happening. Infection, swelling, a broken tooth and problems after surgery are treated as emergencies.</p></div>
+      </details>
+
+      <details class="qa">
+        <summary class="qa__q">Do you treat children and teenagers?</summary>
+        <div class="qa__a"><p>Yes. Wisdom teeth and exposure and bonding are common in that age group. Anyone under 18 must be accompanied by a parent or guardian.</p></div>
+      </details>
+
+      <details class="qa">
+        <summary class="qa__q">What do I bring to the first visit?</summary>
+        <div class="qa__a"><p>Your referral slip and any films, a list of your medications with your physician&rsquo;s name and number, and your completed insurance forms. Mention pregnancy, chronic or recent illness, heart valves, joint replacements, and any past difficulty with anesthesia.</p></div>
+      </details>
+
+      <details class="qa">
+        <summary class="qa__q">Where are you, and is there parking?</summary>
+        <div class="qa__a"><p>2 Reservoir Circle, Suite 103, Pikesville, MD 21208. The office is on the ground floor, parking is outside the door, and it is reachable by public transit.</p></div>
+      </details>
     </div>
   </div>
 </section>
@@ -614,7 +702,7 @@
       <div class="footer__col">
         <h3>Practice</h3>
         <div class="footer__lockup">
-          <svg class="wordmark__mark" viewBox="0 0 120 112" aria-hidden="true" focusable="false">
+          <svg class="wordmark__mark" width="28" height="26" viewBox="0 0 120 112" aria-hidden="true" focusable="false">
             <polygon class="wordmark__mark-olive" points="8,40 60,84 112,40 112,66 60,110 8,66"/>
             <polygon class="wordmark__mark-sage"  points="30,8 60,48 90,8 90,34 60,74 30,34"/>
           </svg>
@@ -648,6 +736,7 @@
         <a href="#surgeons">Surgeons</a>
         <a href="#comfort">Anesthesia</a>
         <a href="#visit">First visit</a>
+        <a href="#faq">FAQ</a>
         <a href="#request">Request an appointment</a>
       </div>
     </div>
@@ -712,6 +801,87 @@
 }
 </script>
 
-<script src="js/main.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need a referral?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most patients are sent by their general dentist or orthodontist. If you have a referral slip and films, bring them. You are welcome to call without one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will it hurt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not during. Every procedure is done under anesthesia, and you choose the depth with your surgeon: local only, oral sedation, or fully asleep. Afterward you are given instructions and a number to call."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What will it cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the procedure and your coverage, so the figure comes at the consultation rather than over the phone. The front desk handles insurance and billing and will go through it with you before anything is scheduled."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I pay?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Credit cards, CareCredit, cash and personal checks. CareCredit lets the cost be spread over instalments."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I drive myself home?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After local anesthetic, yes, the same as after a filling. After oral sedation or a general anesthetic, no: an adult has to stay during surgery and drive you home."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How soon can I be seen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Call and say what is happening. Infection, swelling, a broken tooth and problems after surgery are treated as emergencies."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you treat children and teenagers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Wisdom teeth and exposure and bonding are common in that age group. Anyone under 18 must be accompanied by a parent or guardian."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do I bring to the first visit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your referral slip and any films, a list of your medications with your physician’s name and number, and your completed insurance forms. Mention pregnancy, chronic or recent illness, heart valves, joint replacements, and any past difficulty with anesthesia."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where are you, and is there parking?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2 Reservoir Circle, Suite 103, Pikesville, MD 21208. The office is on the ground floor, parking is outside the door, and it is reachable by public transit."
+      }
+    }
+  ]
+}
+</script>
+
+<script src="js/app.v2.js" defer></script>
 </body>
 </html>

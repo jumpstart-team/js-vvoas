@@ -3,8 +3,8 @@
  * Every colour and font-family below references a token from tokens.css.
  */
 
-@import url("tokens.css");
-@import url("fonts.css");
+@import url("tokens.v2.css");
+@import url("fonts.v2.css");
 
 /* ============================================================
    1 · RESET AND ROOT
@@ -490,6 +490,24 @@ body[data-nav-open="true"] { overflow: hidden; }
 .booking { display: grid; gap: var(--space-6); }
 .booking__actions { display: grid; gap: var(--space-3); }
 .booking__actions .btn { justify-content: space-between; width: 100%; }
+
+/* One primary action per view. The phone stays one tap away but is
+   deliberately subordinate to the request button above it. */
+.booking__phone {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  align-self: center;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-ink-secondary);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.booking__phone svg { width: 0.9375rem; height: 0.9375rem; flex: none; }
+.booking__phone:hover { color: var(--color-accent); }
 
 .booking__hours { display: grid; gap: var(--space-2); }
 .booking__hours-row {
@@ -993,6 +1011,97 @@ a.contact-item__value:hover { color: var(--color-accent); }
 .footer__lockup .wordmark__mark-olive { fill: var(--color-ink-inverse-muted); }
 
 /* ============================================================
+   14c · HOW IT GOES
+   ============================================================ */
+
+.steps__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr));
+  gap: var(--space-6);
+  counter-reset: step;
+}
+
+.step {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+  padding: var(--space-2);
+  border-radius: var(--radius-xl);
+  border: var(--rule-hairline);
+  background-color: var(--color-paper-raised);
+}
+/* Inner core, concentric radius, so the card reads as machined */
+.step > * { margin-inline: clamp(var(--space-4), 2vw, var(--space-6)); }
+.step > .step__n { margin-top: var(--space-6); }
+.step > p { margin-bottom: var(--space-6); }
+
+.step__n {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-accent);
+  color: var(--color-accent-on);
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  line-height: 1;
+}
+.step__title { font-size: var(--text-lg); }
+.step p { font-size: var(--text-base); line-height: 1.5; color: var(--color-ink-secondary); }
+
+/* ============================================================
+   14d · FAQ
+   Native <details> so it works with no JavaScript, is keyboard
+   operable, and stays crawlable by search and answer engines.
+   ============================================================ */
+
+.faq__list {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 52rem;
+}
+
+.qa {
+  border-radius: var(--radius-md);
+  background-color: var(--color-paper-raised);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+.qa:hover { background-color: var(--color-paper-sunk); }
+.qa[open] { background-color: var(--color-paper-sunk); }
+
+.qa__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: var(--space-5) var(--space-6);
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  color: var(--color-ink);
+  line-height: 1.3;
+}
+.qa__q::-webkit-details-marker { display: none; }
+
+/* The marker encodes open state, so it is structural rather than decorative */
+.qa__q::after {
+  content: "";
+  width: 0.75rem;
+  height: 0.75rem;
+  flex: none;
+  border-right: 1.5px solid var(--color-accent);
+  border-bottom: 1.5px solid var(--color-accent);
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform var(--dur-mid) var(--ease-out);
+}
+.qa[open] .qa__q::after { transform: rotate(225deg) translate(-2px, -2px); }
+
+.qa__a { padding: 0 var(--space-6) var(--space-6); max-width: var(--measure); }
+.qa__a p { font-size: var(--text-base); line-height: 1.6; color: var(--color-ink-secondary); }
+
+/* ============================================================
    15 · SCROLL REVEAL — driven by IntersectionObserver in main.js
    ============================================================ */
 
@@ -1014,9 +1123,27 @@ a.contact-item__value:hover { color: var(--color-accent); }
 
 /* Between the widest phone and a roomy laptop the pill still shows every
    link, but the chevron mark costs it width, so the gaps tighten. */
+/* On desktop the lockup holds one line per row. On a phone the pill has
+   shed its links and there is room for the second line to wrap. */
+@media (min-width: 60.0625rem) {
+  .wordmark__type { white-space: nowrap; }
+}
+
+/* Between a small laptop and a wide one the pill is at its tightest: five
+   links, a button and the lockup. The lockup drops its second line there
+   rather than wrapping. Below 60rem the pill sheds its links entirely and
+   the full lockup returns. */
+@media (min-width: 60.0625rem) and (max-width: 80rem) {
+  .wordmark__kind { display: none; }
+}
+
 @media (max-width: 72rem) {
   .nav__pill { gap: var(--space-4); padding-left: var(--space-5); }
   .nav__links { gap: var(--space-5); }
+  /* The number is redundant here: it appears in the booking card, the
+     emergency band, the FAQ, the contact block and the footer, and the
+     primary action is the request button. */
+  .nav__phone { display: none; }
 }
 
 @media (max-width: 60rem) {
@@ -1056,6 +1183,8 @@ a.contact-item__value:hover { color: var(--color-accent); }
   .affiliations { gap: var(--space-6); }
   .affiliations__list { gap: var(--space-8); }
   .surgeon__head { gap: var(--space-4); }
+  .qa__q { font-size: var(--text-base); padding: var(--space-4) var(--space-5); }
+  .qa__a { padding: 0 var(--space-5) var(--space-5); }
   .surgeon__avatar { width: 4.25rem; height: 4.25rem; }
   .urgent__inner { flex-direction: column; align-items: stretch; }
   .urgent__inner .btn { justify-content: space-between; }

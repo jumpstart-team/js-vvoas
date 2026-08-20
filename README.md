@@ -14,10 +14,10 @@ Push it and Vercel serves it.
 
 ```
 index.html                 the whole landing page
-css/tokens.css             design tokens: colour, type, space, motion
-css/fonts.css              @font-face for the two self-hosted families
-css/main.css               everything else, referencing tokens by name
-js/main.js                 nav, scroll reveals, appointment form
+css/tokens.v2.css          design tokens: colour, type, space, motion
+css/fonts.v2.css           @font-face for the two self-hosted families
+css/main.v2.css            everything else, referencing tokens by name
+js/app.v2.js               nav, scroll reveals, appointment form, FAQ
 fonts/                     Newsreader + Instrument Sans, latin subset, variable
 vercel.json                clean URLs, cache and security headers
 favicon.svg
@@ -43,14 +43,22 @@ empty, output directory empty. `vercel.json` handles the rest.
 
 Live at https://js-vvoas.vercel.app
 
-### A note on caching
+### A note on caching, and why the files carry `.v2`
 
-Asset filenames are not content-hashed, so `vercel.json` only marks the
-fonts `immutable`. CSS and JS revalidate on every request, which costs a
-304 and guarantees an edit is live the moment it deploys. Images get a day.
+The first deploy served every asset `immutable, max-age=31536000` while the
+filenames were not content-hashed. That is the wrong header for an
+unversioned name, and it poisoned any browser that visited during that
+window: those caches pinned `css/main.css` for a year and stopped
+revalidating, so they went on pairing fresh HTML with year-old CSS.
 
-Once the design settles and edits become rare, adding a hash to the CSS and
-JS filenames would let those go `immutable` too.
+The headers were corrected, but a corrected header cannot reach a cache that
+has stopped asking. The only cure is a filename the poisoned cache has never
+seen, which is why the CSS and JS carry a `.v2` infix.
+
+Current policy: fonts stay `immutable` (a woff2 under a fixed name does not
+change), CSS and JS revalidate, images get a day. Because CSS and JS
+revalidate, editing them needs no further rename. Do not put `immutable`
+back on an unhashed filename.
 
 Once the new domain is chosen, three things need updating:
 
