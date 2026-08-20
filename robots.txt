@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: add the sitemap line once the new domain is live.
+# Sitemap: https://NEW-DOMAIN.com/sitemap.xml
