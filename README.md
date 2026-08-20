@@ -41,6 +41,17 @@ works, but the self-hosted fonts will not load. Use the server.
 Import the repo at vercel.com. Framework preset **Other**, build command
 empty, output directory empty. `vercel.json` handles the rest.
 
+Live at https://js-vvoas.vercel.app
+
+### A note on caching
+
+Asset filenames are not content-hashed, so `vercel.json` only marks the
+fonts `immutable`. CSS and JS revalidate on every request, which costs a
+304 and guarantees an edit is live the moment it deploys. Images get a day.
+
+Once the design settles and edits become rare, adding a hash to the CSS and
+JS filenames would let those go `immutable` too.
+
 Once the new domain is chosen, three things need updating:
 
 1. `index.html` — uncomment the `canonical` and `og:url` tags near the top
