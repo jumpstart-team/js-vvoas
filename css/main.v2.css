@@ -158,6 +158,27 @@ summary:focus-visible {
   max-width: var(--measure);
 }
 
+/* Asymmetric header, taken from the reference board: the marker and the
+   heading hold the left column, the supporting line sits in the right and
+   aligns to the heading's baseline row rather than stacking beneath it. */
+@media (min-width: 64rem) {
+  .section-head {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    column-gap: clamp(var(--space-12), calc(96 * var(--fluid)), var(--space-20));
+    row-gap: var(--space-4);
+    align-items: end;
+    max-width: none;
+  }
+  .section-head > .marker { grid-column: 1; grid-row: 1; margin-bottom: 0; }
+  .section-head > h2      { grid-column: 1; grid-row: 2; }
+  .section-head > .lead   { grid-column: 2; grid-row: 2; max-width: 32rem; }
+}
+
+/* Inside the review header the block is already constrained by its own
+   flex row, so it stays single column. */
+.quotes__head .section-head { grid-template-columns: minmax(0, 1fr); max-width: var(--measure); }
+.quotes__head .section-head > * { grid-column: 1; grid-row: auto; }
+
 .band-dark {
   background-color: var(--color-canvas);
   color: var(--color-ink-inverse-muted);
@@ -538,6 +559,105 @@ body[data-nav-open="true"] { overflow: hidden; }
   color: var(--color-accent-deep);
   font-size: var(--text-sm);
   line-height: 1.5;
+}
+
+/* ============================================================
+   6b · FULL-BLEED HERO
+   The image carries the section rather than sitting beside it. Text sits
+   on the left over a scrim, which is a legibility device, not decoration:
+   the reception photograph is bright and white on that side.
+   ============================================================ */
+
+.hero-full {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-items: end;
+  min-height: clamp(30rem, calc(660 * var(--fluid)), 44rem);
+  padding-block: clamp(var(--space-32), calc(210 * var(--fluid)), 15rem) var(--space-section);
+  overflow: hidden;
+}
+
+.hero-full__media { position: absolute; inset: 0; z-index: -2; }
+.hero-full__media img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 50%; }
+
+/* Scrim: opaque enough on the left to carry text, clear on the right so
+   the photograph is still the subject. */
+.hero-full::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    100deg,
+    var(--color-paper) 0%,
+    var(--color-paper) 26%,
+    rgba(247, 247, 241, 0.92) 40%,
+    rgba(247, 247, 241, 0.55) 58%,
+    rgba(247, 247, 241, 0.12) 78%
+  );
+}
+
+.hero-full__inner { display: grid; justify-items: start; max-width: var(--shell-max); }
+.hero-full__display {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, calc(88 * var(--fluid)), 6rem);
+  line-height: 0.96;
+  letter-spacing: -0.032em;
+  color: var(--color-ink);
+  margin-bottom: var(--space-6);
+}
+.hero-full__lead {
+  font-size: var(--text-md);
+  line-height: 1.55;
+  color: var(--color-ink-secondary);
+  max-width: 34rem;
+  margin-bottom: var(--space-8);
+}
+.hero-full__actions { display: flex; align-items: center; gap: var(--space-6); flex-wrap: wrap; }
+.hero-full__phone {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.hero-full__phone:hover { color: var(--color-accent); }
+
+/* On a narrow screen the photograph cannot carry text beside it, so it
+   becomes a band above and the copy sits on solid ground below. */
+@media (max-width: 52rem) {
+  .hero-full {
+    min-height: 0;
+    align-items: start;
+    padding-top: clamp(16rem, 58vw, 22rem);
+    padding-bottom: var(--space-16);
+  }
+  .hero-full__media { inset: 0 0 auto 0; height: clamp(14rem, 52vw, 20rem); }
+  .hero-full__media img { object-position: 58% 46%; }
+  .hero-full::after {
+    background: linear-gradient(
+      180deg,
+      rgba(247, 247, 241, 0) 0%,
+      rgba(247, 247, 241, 0) 34%,
+      var(--color-paper) 46%
+    );
+  }
+}
+
+/* ============================================================
+   6c · BOOKING BAR
+   ============================================================ */
+
+.bookbar { padding-top: var(--space-block); }
+.bookbar__grid {
+  display: grid;
+  gap: clamp(var(--space-10), 5vw, var(--space-16));
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  align-items: start;
+}
+@media (max-width: 60rem) {
+  .bookbar__grid { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ============================================================
@@ -1259,6 +1379,31 @@ a.contact-item__value:hover { color: var(--color-accent); }
   color: var(--color-brand-sage);
   opacity: 0.9;
 }
+
+/* ============================================================
+   14g2 · ICON ROW
+   ============================================================ */
+
+.iconrow {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+}
+.icontile {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: center;
+  text-align: center;
+  align-content: start;
+  padding: clamp(var(--space-8), calc(44 * var(--fluid)), var(--space-12)) var(--space-6);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-paper-raised);
+  transition: transform var(--dur-mid) var(--ease-out);
+}
+.icontile:hover { transform: translateY(-3px); }
+.icontile svg { width: 2.25rem; height: 2.25rem; color: var(--color-accent); }
+.icontile h3 { font-size: var(--text-lg); font-family: var(--font-display); }
+.icontile p { font-size: var(--text-base); line-height: 1.5; color: var(--color-ink-secondary); max-width: 26ch; }
 
 /* ============================================================
    14h · CIRCULAR BADGE
