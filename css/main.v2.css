@@ -694,19 +694,34 @@ body[data-nav-open="true"] { overflow: hidden; }
 .service-group__title { font-size: var(--text-xl); }
 .service-group__list {
   display: grid;
-  gap: var(--space-1);
-  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+  gap: clamp(var(--space-5), calc(28 * var(--fluid)), var(--space-8));
+  /* 17rem missed a third column by a few pixels at 1280 */
+  grid-template-columns: repeat(auto-fit, minmax(min(14.5rem, 100%), 1fr));
 }
 
+/* Image-topped card, the reference board's core unit: picture on top,
+   short caption beneath. */
 .service {
   display: grid;
-  gap: var(--space-2);
+  gap: var(--space-3);
   align-content: start;
-  padding: var(--space-6);
+  padding: 0;
   border-radius: var(--radius-md);
-  transition: background-color var(--dur-fast) var(--ease-out);
 }
-.service:hover { background-color: var(--color-paper-raised); }
+.service__media {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background-color: var(--color-paper-sunk);
+  aspect-ratio: 4 / 3;
+  margin-bottom: var(--space-2);
+}
+.service__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.service:hover .service__media img { transform: scale(1.04); }
 .service__name { font-size: var(--text-lg); font-family: var(--font-display); color: var(--color-ink); }
 .service__desc { font-size: var(--text-base); line-height: 1.5; color: var(--color-ink-secondary); }
 
@@ -879,6 +894,22 @@ body[data-nav-open="true"] { overflow: hidden; }
 }
 .quote__by { font-size: var(--text-sm); color: var(--color-ink-muted); }
 .quote__by strong { color: var(--color-ink); font-weight: 600; }
+
+/* ============================================================
+   11b · FULL-BLEED STRIP
+   Runs edge to edge with no shell, the way the reference board breaks
+   between sections with a band of photography.
+   ============================================================ */
+
+.strip { padding-block: 0; }
+.strip__figure { margin: 0; }
+.strip__figure img {
+  width: 100%;
+  height: clamp(14rem, calc(340 * var(--fluid)), 24rem);
+  object-fit: cover;
+  object-position: 50% 42%;
+  display: block;
+}
 
 /* ============================================================
    12 · LOGISTICS — removes the friction before the first visit
