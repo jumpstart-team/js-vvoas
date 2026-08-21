@@ -286,13 +286,23 @@ summary:focus-visible {
    ============================================================ */
 
 .nav {
-  /* relative, not static: the bar scrolls away with the page, but z-index
-     is ignored on a static element and the hero image painted over it */
-  position: relative;
+  /* Absolute, not relative: relative still occupies its own flow height,
+     which pushed the hero section down by the nav's own height and left a
+     visible strip of plain background above the photo instead of the
+     photo running flush to the very top of the page. Absolute removes it
+     from flow entirely (the hero section becomes the page's first flowed
+     content, starting at y=0) while still letting z-index apply, so the
+     nav paints above the photo it now overlays. It still scrolls away
+     normally: absolute positioning is anchored to the document, not the
+     viewport, so this is not a reintroduction of the sticky behaviour
+     that was explicitly removed. */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: var(--z-sticky);
   padding-top: var(--space-4);
   padding-inline: var(--shell-pad);
-  margin-bottom: calc(var(--space-16) * -1);
 }
 
 .nav__pill {
