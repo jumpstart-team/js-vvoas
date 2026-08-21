@@ -154,7 +154,7 @@ summary:focus-visible {
 .section-head {
   display: grid;
   gap: var(--space-5);
-  margin-bottom: var(--space-16);
+  margin-bottom: var(--space-12);
   max-width: var(--measure);
 }
 
@@ -548,7 +548,7 @@ body[data-nav-open="true"] { overflow: hidden; }
   display: grid;
   align-items: end;
   min-height: clamp(30rem, calc(660 * var(--fluid)), 44rem);
-  padding-block: clamp(var(--space-32), calc(210 * var(--fluid)), 15rem) var(--space-section);
+  padding-block: clamp(var(--space-16), calc(120 * var(--fluid)), 9rem) var(--space-section);
   overflow: hidden;
 }
 

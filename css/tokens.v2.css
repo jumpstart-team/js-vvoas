@@ -99,9 +99,9 @@
 
   --text-sm:    0.9375rem;  /* 15px — labels, meta. The desktop floor.
                                Raised to 16px on small screens below. */
-  --text-base:  1rem;       /* 16px — default body, and every form input,
+  --text-base:  1.0625rem;  /* 17px — default body, and every form input,
                                which keeps iOS Safari from zooming on focus */
-  --text-md:    1.125rem;   /* 18px — lead paragraphs */
+  --text-md:    1.1875rem;  /* 19px — lead paragraphs */
   --text-lg:    1.25rem;    /* 20px */
   --text-xl:    1.5rem;     /* 24px */
   --text-2xl:   1.875rem;   /* 30px */
@@ -145,8 +145,8 @@
   --viewport: 1440;
   --fluid: calc(100vw / var(--viewport));
 
-  --space-section: clamp(var(--space-12), calc(80 * var(--fluid)), 6rem);
-  --space-block:   clamp(var(--space-10), calc(52 * var(--fluid)), 4.5rem);
+  --space-section: clamp(var(--space-10), calc(56 * var(--fluid)), 4.5rem);
+  --space-block:   clamp(2rem, calc(36 * var(--fluid)), 3.25rem);
 
   --shell-max: 78rem;
   --shell-pad: clamp(var(--space-5), 4.5vw, var(--space-16));
