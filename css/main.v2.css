@@ -680,7 +680,7 @@ body[data-nav-open="true"] { overflow: hidden; }
    7 · URGENT BAND — the fastest path for someone in pain
    ============================================================ */
 
-.urgent { padding-block: var(--space-16); }
+.urgent { padding-top: 0; padding-bottom: var(--space-section); }
 .urgent__inner {
   display: flex;
   flex-wrap: wrap;
@@ -1172,12 +1172,17 @@ a.contact-item__value:hover { color: var(--color-accent); }
 
 /* The sedation band carries the practice's own geometric texture, held
    well back so the measured contrast of the band still holds. */
-.comfort { position: relative; isolation: isolate; overflow: hidden; }
+.comfort { position: relative; isolation: isolate; }
 .comfort::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
+  /* Self-clipped to the same rounded top edge panel-lift draws, since
+     .comfort no longer hides overflow: the seam badge below needs to
+     straddle this section's own top boundary, which overflow: hidden
+     would otherwise cut in half. */
+  border-radius: var(--radius-panel) var(--radius-panel) 0 0;
   background-image: url("../img/texture-dark.webp");
   background-size: cover;
   background-position: center;
@@ -1275,6 +1280,13 @@ a.contact-item__value:hover { color: var(--color-accent); }
   font-family: var(--font-display);
   font-size: var(--text-base);
   line-height: 1;
+}
+.step__chevron {
+  width: 0.625rem;
+  height: 0.5875rem;
+  margin: var(--space-3) 0 var(--space-1);
+  color: var(--color-accent);
+  opacity: 0.85;
 }
 .step__title { font-size: var(--text-lg); }
 .step p { font-size: var(--text-base); line-height: 1.5; color: var(--color-ink-secondary); }
@@ -1525,6 +1537,30 @@ a.contact-item__value:hover { color: var(--color-accent); }
   .panel { min-height: 0; }
   .marker { margin-bottom: var(--space-4); }
 }
+
+/* ============================================================
+   14j · SEAM MARK
+   Marks the transition every panel-lift element makes over the section
+   above it. The same circular, single-colour treatment as the step
+   numerals, so a numbered sequence and a structural seam read as the
+   same visual family.
+   ============================================================ */
+
+.seam-mark {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-accent);
+  box-shadow: var(--elev-raised);
+}
+.seam-mark svg { width: 0.875rem; height: 0.8225rem; color: var(--color-accent-on); }
 
 /* ============================================================
    15 · SCROLL REVEAL — driven by IntersectionObserver in main.js
