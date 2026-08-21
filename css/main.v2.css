@@ -27,6 +27,12 @@ html {
   scroll-behavior: smooth;
   /* Offset for the floating nav when jumping to an in-page anchor */
   scroll-padding-top: var(--space-8);
+  /* The brand chevron as the pointer, halo-stroked in paper so it reads
+     on both light and dark bands. Hotspot sits at its top-left vertex. */
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='28' viewBox='9.994 -2 51.016 48.142'%3E%3Cpath d='M34.985 25.806 L11.994 0 L11.994 16.072 L34.691 43.632 C35.111 44.142 35.893 44.142 36.313 43.632 L59.01 16.072 L59.01 0 L36.019 25.806 C35.744 26.115 35.26 26.115 34.985 25.806 Z' fill='%232d615d' stroke='%23f7f7f1' stroke-width='3' stroke-linejoin='round' paint-order='stroke'/%3E%3C/svg%3E")
+    1 1,
+    auto;
 }
 
 body {
@@ -1002,6 +1008,8 @@ body[data-nav-open="true"] { overflow: hidden; }
   font-size: var(--text-base);
   line-height: 1.4;
   transition: border-color var(--dur-fast) var(--ease-out);
+  /* Typable fields keep the native text cursor over the brand pointer. */
+  cursor: auto;
 }
 .input::placeholder { color: var(--color-ink-muted); }
 .input:hover { border-color: var(--color-ink-muted); }
