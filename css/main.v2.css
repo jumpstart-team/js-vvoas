@@ -553,7 +553,19 @@ body[data-nav-open="true"] { overflow: hidden; }
 }
 
 .hero-full__media { position: absolute; inset: 0; z-index: -2; }
-.hero-full__media img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 50%; }
+/* Blurred and slightly overscaled: the photo reads as atmosphere behind
+   the text rather than a documentary shot competing with it. The 1.08
+   scale keeps the blur's soft edge falloff outside the visible frame,
+   since a blurred image cropped exactly at its own box would show a
+   crisper, unblurred rim right at the boundary. */
+.hero-full__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 50%;
+  filter: blur(9px);
+  transform: scale(1.08);
+}
 
 /* Scrim: a uniform black wash over the whole photograph, dimming it rather
    than masking one side of it. 0.7 opacity was measured against the actual
