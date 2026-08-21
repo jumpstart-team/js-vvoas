@@ -27,11 +27,13 @@ html {
   scroll-behavior: smooth;
   /* Offset for the floating nav when jumping to an in-page anchor */
   scroll-padding-top: var(--space-8);
-  /* The brand chevron as the pointer, halo-stroked in paper so it reads
-     on both light and dark bands. Hotspot sits at its top-left vertex. */
+  /* The brand chevron as the pointer, rotated so its own point is the
+     tip — halo-stroked in paper so it reads on both light and dark
+     bands. Hotspot sits exactly on that tip vertex, same as a native
+     arrow cursor. */
   cursor:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='28' viewBox='9.994 -2 51.016 48.142'%3E%3Cpath d='M34.985 25.806 L11.994 0 L11.994 16.072 L34.691 43.632 C35.111 44.142 35.893 44.142 36.313 43.632 L59.01 16.072 L59.01 0 L36.019 25.806 C35.744 26.115 35.26 26.115 34.985 25.806 Z' fill='%232d615d' stroke='%23f7f7f1' stroke-width='3' stroke-linejoin='round' paint-order='stroke'/%3E%3C/svg%3E")
-    1 1,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='1.36 -12.07 68.37 68.37'%3E%3Cpath d='M34.985 25.806 L11.994 0 L11.994 16.072 L34.691 43.632 C35.111 44.142 35.893 44.142 36.313 43.632 L59.01 16.072 L59.01 0 L36.019 25.806 C35.744 26.115 35.26 26.115 34.985 25.806 Z' transform='rotate(135 35.502 22.071)' fill='%232d615d' stroke='%23f7f7f1' stroke-width='3' stroke-linejoin='round' paint-order='stroke'/%3E%3C/svg%3E")
+    9 9,
     auto;
 }
 
@@ -505,7 +507,9 @@ body[data-nav-open="true"] { overflow: hidden; }
   border: var(--rule-hairline);
   background-color: var(--color-paper-raised);
   box-shadow: var(--elev-raised);
+  transition: box-shadow var(--dur-mid) var(--ease-out), transform var(--dur-mid) var(--ease-out);
 }
+.enclosure:hover { box-shadow: var(--elev-hover); transform: translateY(-3px); }
 .enclosure__core {
   padding: clamp(var(--space-6), 3vw, var(--space-10));
   border-radius: calc(var(--radius-xl) - var(--space-2));
@@ -844,7 +848,9 @@ body[data-nav-open="true"] { overflow: hidden; }
   border: var(--rule-inverse);
   background-color: var(--color-canvas-raised);
   box-shadow: var(--elev-raised-dark);
+  transition: box-shadow var(--dur-mid) var(--ease-out), transform var(--dur-mid) var(--ease-out);
 }
+.comfort__card:hover { box-shadow: var(--elev-hover-dark); transform: translateY(-3px); }
 .comfort__card h3 { font-size: var(--text-lg); }
 
 /* ============================================================
@@ -911,7 +917,9 @@ body[data-nav-open="true"] { overflow: hidden; }
   border-radius: var(--radius-lg);
   background-color: var(--color-paper-raised);
   box-shadow: var(--elev-raised);
+  transition: box-shadow var(--dur-mid) var(--ease-out), transform var(--dur-mid) var(--ease-out);
 }
+.quote:hover { box-shadow: var(--elev-hover); transform: translateY(-3px); }
 .quote__text {
   font-family: var(--font-display);
   font-size: var(--text-lg);
@@ -1273,7 +1281,9 @@ a.contact-item__value:hover { color: var(--color-accent); }
   border: var(--rule-hairline);
   background-color: var(--color-paper-raised);
   box-shadow: var(--elev-raised);
+  transition: box-shadow var(--dur-mid) var(--ease-out), transform var(--dur-mid) var(--ease-out);
 }
+.step:hover { box-shadow: var(--elev-hover); transform: translateY(-3px); }
 /* Inner core, concentric radius, so the card reads as machined */
 .step > * { margin-inline: clamp(var(--space-4), 2vw, var(--space-6)); }
 .step > .step__n { margin-top: var(--space-6); }
@@ -1402,8 +1412,11 @@ a.contact-item__value:hover { color: var(--color-accent); }
   background-color: var(--color-paper-sunk);
   min-height: clamp(15rem, calc(300 * var(--fluid)), 20rem);
   box-shadow: var(--elev-raised);
+  transition: box-shadow var(--dur-mid) var(--ease-out), transform var(--dur-mid) var(--ease-out);
 }
 .panel--dark { background-color: var(--color-canvas); color: var(--color-ink-inverse-muted); box-shadow: var(--elev-raised-dark); }
+.panel:hover { box-shadow: var(--elev-hover); transform: translateY(-3px); }
+.panel--dark:hover { box-shadow: var(--elev-hover-dark); }
 .panel--dark .panel__figure,
 .panel--dark .panel__title { color: var(--color-ink-inverse); }
 
@@ -1460,9 +1473,10 @@ a.contact-item__value:hover { color: var(--color-accent); }
   padding: clamp(var(--space-8), calc(44 * var(--fluid)), var(--space-12)) var(--space-6);
   border-radius: var(--radius-lg);
   background-color: var(--color-paper-raised);
-  transition: transform var(--dur-mid) var(--ease-out);
+  box-shadow: var(--elev-surface);
+  transition: transform var(--dur-mid) var(--ease-out), box-shadow var(--dur-mid) var(--ease-out);
 }
-.icontile:hover { transform: translateY(-3px); }
+.icontile:hover { transform: translateY(-3px); box-shadow: var(--elev-hover); }
 .icontile svg { width: 2.25rem; height: 2.25rem; color: var(--color-accent); }
 .icontile h3 { font-size: var(--text-lg); font-family: var(--font-display); }
 .icontile p { font-size: var(--text-base); line-height: 1.5; color: var(--color-ink-secondary); max-width: 26ch; }
