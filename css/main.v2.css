@@ -187,6 +187,12 @@ summary:focus-visible {
 .quotes__head .section-head { grid-template-columns: minmax(0, 1fr); max-width: var(--measure); }
 .quotes__head .section-head > * { grid-column: 1; grid-row: auto; max-width: none; }
 
+/* .contact-block is itself the narrow half of a two-column request grid,
+   too narrow for the section-head's wide-screen heading/lead split -
+   without this it wraps "Request an appointment" one word per line. */
+.contact-block .section-head { grid-template-columns: minmax(0, 1fr); max-width: var(--measure); }
+.contact-block .section-head > * { grid-column: 1; grid-row: auto; max-width: none; }
+
 .band-dark {
   background-color: var(--color-canvas);
   color: var(--color-ink-inverse-muted);
@@ -207,6 +213,32 @@ summary:focus-visible {
 .band-dark .display { color: var(--color-ink-inverse); }
 .band-dark .label { color: var(--color-ink-inverse-muted); }
 .band-dark .lead { color: var(--color-ink-inverse-muted); }
+
+/* ============================================================
+   3b · PAGE-LEVEL UTILITIES
+   The nav is position:absolute over everything, so a page whose first
+   section isn't the photo hero needs the same top clearance the hero
+   gives itself. --cta-centered closes an inner page with one shared
+   pitch back to the contact page.
+   ============================================================ */
+
+/* Not hero's own clearance value: hero bottom-aligns its content
+   (align-items: end) so its top padding barely matters for overlap.
+   These page-heads flow top-down, so the floor has to actually clear
+   the nav pill's real rendered height - measured near 88px on phones -
+   plus breathing room, not just match hero's floor. */
+.section--top-clear { padding-top: clamp(7.5rem, calc(120 * var(--fluid)), 9rem); }
+
+.cta-centered {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-5);
+  max-width: 34rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.iconrow__more { margin-top: var(--space-8); text-align: center; }
 
 /* ============================================================
    4 · BUTTONS — one primary, one secondary, one quiet per context.

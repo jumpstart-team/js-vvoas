@@ -32,7 +32,7 @@
 <!-- ============ NAV ============ -->
 <header class="nav" id="siteNav">
   <div class="nav__pill">
-    <a class="wordmark" href="#top">
+    <a class="wordmark" href="/">
       <!-- The practice chevron, redrawn from the logo artwork so it stays
            crisp at any size. Colours are the two logo tokens, exact. -->
       <svg class="wordmark__mark" width="27" height="29" viewBox="0 0 70.284 75.667" aria-hidden="true" focusable="false">
@@ -46,16 +46,15 @@
     </a>
 
     <nav class="nav__links" aria-label="Primary">
-      <a class="nav__link" href="#services">Services</a>
-      <a class="nav__link" href="#surgeons">Surgeons</a>
-      <a class="nav__link" href="#comfort">Anesthesia</a>
-      <a class="nav__link" href="#visit">First visit</a>
-      <a class="nav__link" href="#faq">FAQ</a>
+      <a class="nav__link" href="/services">Services</a>
+      <a class="nav__link" href="/surgeons">Surgeons</a>
+      <a class="nav__link" href="/patient-info">Patient info</a>
+      <a class="nav__link" href="/faq">FAQ</a>
     </nav>
 
     <a class="nav__phone" href="tel:+14105819008">(410)&nbsp;581-9008</a>
 
-    <a class="btn" href="#request">
+    <a class="btn" href="/contact">
       Request an appointment
       <span class="btn__mark" aria-hidden="true">
         <svg viewBox="0 0 16 16" fill="none"><path d="M3 13 13 3M6 3h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -74,17 +73,15 @@
 </header>
 
 <div class="nav__overlay" id="navOverlay" data-open="false">
-  <a class="nav__overlay-link" href="#services">Services</a>
-  <a class="nav__overlay-link" href="#surgeons">Surgeons</a>
-  <a class="nav__overlay-link" href="#comfort">Anesthesia</a>
-  <a class="nav__overlay-link" href="#visit">First visit</a>
-  <a class="nav__overlay-link" href="#faq">FAQ</a>
+  <a class="nav__overlay-link" href="/services">Services</a>
+  <a class="nav__overlay-link" href="/surgeons">Surgeons</a>
+  <a class="nav__overlay-link" href="/patient-info">Patient info</a>
+  <a class="nav__overlay-link" href="/faq">FAQ</a>
+  <a class="nav__overlay-link" href="/contact">Contact</a>
   <a class="nav__overlay-link" href="tel:+14105819008">(410) 581-9008</a>
 </div>
 
 <main id="main">
-<span id="top"></span>
-
 <!-- ============ HERO ============ -->
 <section class="hero-full">
   <div class="hero-full__media">
@@ -103,7 +100,7 @@
       Your surgeon plans your anesthesia, performs your procedure, and calls you afterward.
     </p>
     <div class="hero-full__actions" data-reveal>
-      <a class="btn" href="#request">
+      <a class="btn" href="/contact">
         Request an appointment
         <span class="btn__mark" aria-hidden="true">
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13 13 3M6 3h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -113,7 +110,6 @@
     </div>
   </div>
 </section>
-
 <!-- ============ BOOKING BAR ============ -->
 <section class="section bookbar">
   <div class="shell bookbar__grid">
@@ -146,7 +142,6 @@
     </dl>
   </div>
 </section>
-
 <!-- ============ PANELS ============ -->
 <section class="section">
   <div class="shell panels">
@@ -169,7 +164,6 @@
     </article>
   </div>
 </section>
-
 <!-- ============ ICON ROW ============ -->
 <section class="section" style="padding-top:0">
   <div class="shell iconrow">
@@ -200,8 +194,8 @@
       <p>Swelling, abscesses, broken teeth and problems after surgery.</p>
     </article>
   </div>
+  <p class="shell iconrow__more" data-reveal><a class="btn btn--secondary" href="/services">See all services<span class="btn__mark" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13 13 3M6 3h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></p>
 </section>
-
 <!-- ============ URGENT ============ -->
 <section class="urgent">
   <div class="shell">
@@ -219,279 +213,6 @@
     </div>
   </div>
 </section>
-
-<!-- ============ SERVICES ============ -->
-<section class="section band-tint" id="services">
-  <div class="shell">
-    <div class="section-head" data-reveal>
-      <h2 class="heading-1">What we treat</h2>
-      <p class="lead">
-        Most patients reach us on a referral from their dentist or orthodontist. These are the
-        procedures we perform.
-      </p>
-    </div>
-
-    <div class="services__groups">
-
-      <div class="service-group" data-reveal>
-        <h3 class="service-group__title">Extractions and wisdom teeth</h3>
-        <div class="service-group__list">
-          <article class="service">
-            <div class="service__media">
-              <img src="img/custom_images_services_wisdom.webp" width="400" height="300" loading="lazy" decoding="async" alt="A panoramic dental x-ray with the four wisdom teeth highlighted.">
-            </div>
-            <h4 class="service__name">Wisdom teeth</h4>
-            <p class="service__desc">Third molars, impacted, angled, or still under bone.</p>
-          </article>
-          <article class="service">
-            <div class="service__media">
-              <img src="img/custom_images_services_extractions.webp" width="400" height="300" loading="lazy" decoding="async" alt="An extracted tooth held in a gloved hand.">
-            </div>
-            <h4 class="service__name">Extractions</h4>
-            <p class="service__desc">We remove teeth that are broken, beyond restoring, or crowding the arch.</p>
-          </article>
-          <article class="service">
-            <div class="service__media">
-              <img src="img/custom_images_services_bonding.webp" width="400" height="300" loading="lazy" decoding="async" alt="An x-ray being reviewed, showing an unerupted tooth.">
-            </div>
-            <h4 class="service__name">Exposure and bonding</h4>
-            <p class="service__desc">For a tooth that has not come through on its own. We uncover it and bond a bracket to it, so your orthodontist can draw it into position.</p>
-          </article>
-        </div>
-      </div>
-
-      <div class="service-group" data-reveal>
-        <h3 class="service-group__title">Restoring what is missing</h3>
-        <div class="service-group__list">
-          <article class="service">
-            <div class="service__media">
-              <img src="img/system_images_services_dental_implant_dentistry.webp" width="400" height="300" loading="lazy" decoding="async" alt="A patient smiling after implant treatment.">
-            </div>
-            <h4 class="service__name">Dental implants</h4>
-            <p class="service__desc">A titanium fixture set into the jaw to carry a crown, bridge or denture.</p>
-          </article>
-          <article class="service">
-            <div class="service__media">
-              <img src="img/custom_images_services_grafts1.webp" width="400" height="300" loading="lazy" decoding="async" alt="A patient smiling after bone graft treatment.">
-            </div>
-            <h4 class="service__name">Bone grafting</h4>
-            <p class="service__desc">The ridge thins when a tooth has been missing a while, leaving an implant nothing to hold. Grafting rebuilds it.</p>
-          </article>
-          <article class="service">
-            <div class="service__media">
-              <img src="img/custom_images_services_sinus.webp" width="400" height="300" loading="lazy" decoding="async" alt="A patient smiling after sinus lift treatment.">
-            </div>
-            <h4 class="service__name">Sinus lift</h4>
-            <p class="service__desc">We add height beneath the sinus floor in the upper back jaw so we can place an implant safely.</p>
-          </article>
-        </div>
-      </div>
-
-      <div class="service-group" data-reveal>
-        <h3 class="service-group__title">Pain, infection and diagnosis</h3>
-        <div class="service-group__list">
-          <article class="service">
-            <div class="service__media">
-              <img src="img/custom_images_services_toothache.webp" width="400" height="300" loading="lazy" decoding="async" alt="A man holding his jaw in discomfort.">
-            </div>
-            <h4 class="service__name">Tooth pain or infection</h4>
-            <p class="service__desc">We find the source and treat it, abscesses and non-vital teeth included.</p>
-          </article>
-          <article class="service">
-            <div class="service__media">
-              <img src="img/custom_images_services_pathology1.webp" width="400" height="300" loading="lazy" decoding="async" alt="A patient smiling after oral pathology treatment.">
-            </div>
-            <h4 class="service__name">Oral pathology</h4>
-            <p class="service__desc">We examine and biopsy sores, lumps and patches that have not healed on their own.</p>
-          </article>
-          <article class="service">
-            <div class="service__media">
-              <img src="img/system_images_services_dental_emergency_treatment.webp" width="400" height="300" loading="lazy" decoding="async" alt="A woman holding her jaw in pain.">
-            </div>
-            <h4 class="service__name">Emergency treatment</h4>
-            <p class="service__desc">We handle swelling, broken teeth, bleeding, and anything that goes wrong after surgery.</p>
-          </article>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============ HOW IT WORKS ============ -->
-<section class="section steps" id="how">
-  <div class="shell">
-    <div class="section-head" data-reveal>
-      <h2 class="heading-1">How it goes</h2>
-    </div>
-
-    <ol class="steps__list">
-      <li class="step" data-reveal>
-        <span class="step__n" aria-hidden="true">1</span>
-        <svg class="step__chevron" viewBox="11.994 0 47.016 44.142" fill="none" aria-hidden="true"><path d="M34.985 25.806 L11.994 0 L11.994 16.072 L34.691 43.632 C35.111 44.142 35.893 44.142 36.313 43.632 L59.01 16.072 L59.01 0 L36.019 25.806 C35.744 26.115 35.26 26.115 34.985 25.806 Z" fill="currentColor"/></svg>
-        <h3 class="step__title">Call or send the form</h3>
-        <p>Tell the front desk what is happening and whether a dentist referred you. They will book you a time.</p>
-      </li>
-      <li class="step" data-reveal>
-        <span class="step__n" aria-hidden="true">2</span>
-        <svg class="step__chevron" viewBox="11.994 0 47.016 44.142" fill="none" aria-hidden="true"><path d="M34.985 25.806 L11.994 0 L11.994 16.072 L34.691 43.632 C35.111 44.142 35.893 44.142 36.313 43.632 L59.01 16.072 L59.01 0 L36.019 25.806 C35.744 26.115 35.26 26.115 34.985 25.806 Z" fill="currentColor"/></svg>
-        <h3 class="step__title">Consultation and a plan</h3>
-        <p>Your surgeon examines you, takes films if they are needed, and explains your options, your anesthesia and what it will cost.</p>
-      </li>
-      <li class="step" data-reveal>
-        <span class="step__n" aria-hidden="true">3</span>
-        <svg class="step__chevron" viewBox="11.994 0 47.016 44.142" fill="none" aria-hidden="true"><path d="M34.985 25.806 L11.994 0 L11.994 16.072 L34.691 43.632 C35.111 44.142 35.893 44.142 36.313 43.632 L59.01 16.072 L59.01 0 L36.019 25.806 C35.744 26.115 35.26 26.115 34.985 25.806 Z" fill="currentColor"/></svg>
-        <h3 class="step__title">The procedure</h3>
-        <p>We operate, send you home with written instructions, and your surgeon calls to check on you.</p>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<!-- ============ SURGEONS ============ -->
-<section class="section" id="surgeons" style="padding-top:0">
-  <div class="shell">
-    <div class="section-head" data-reveal>
-      <h2 class="heading-1">The surgeons</h2>
-      <p class="lead">
-        Dr. Awalt built this practice on trust, communication and compassion. She explains every option plainly and puts safety first. Dr. Charnowitz joined her on those terms.
-      </p>
-    </div>
-
-    <div class="surgeons__grid">
-
-      <article class="surgeon" data-reveal>
-        <div class="surgeon__head">
-          <!-- No photograph of Dr. Awalt exists on the current site. Swap this
-               div for <img class="surgeon__avatar" src="img/dr-awalt.webp" alt="Dr. Bethany Serafin Awalt">
-               once the practice supplies a headshot. -->
-          <div class="surgeon__avatar surgeon__avatar--placeholder" title="Photograph to be supplied">
-            <span aria-hidden="true">BA</span>
-          </div>
-          <div>
-            <h3 class="surgeon__name">Bethany Serafin Awalt, DMD, PA</h3>
-            <p class="surgeon__role">Owner and oral &amp; maxillofacial surgeon</p>
-          </div>
-        </div>
-
-        <div class="surgeon__bio">
-          <p>
-            Dr. Awalt studied biology as an undergraduate, graduating magna cum laude, then took her
-            dental degree at the University of Pittsburgh School of Dental Medicine. Her hospital
-            residency in oral and maxillofacial surgery was at Woodhull Medical Center in New York.
-          </p>
-          <p>
-            She has practiced for more than twenty years and teaches as a clinical instructor. She has
-            operated on surgical missions abroad and in volunteer programs closer to home. Her day-to-day
-            work is extractions, dental implants, bone grafting, oral pathology and outpatient anesthesia.
-          </p>
-
-          <ul class="credentials">
-            <li class="credential">
-              Diplomate, American Board of Oral and Maxillofacial Surgery
-            </li>
-            <li class="credential">
-              Anesthesia Evaluator
-              <span class="credential__where">Maryland State Board of Dental Examiners</span>
-            </li>
-            <li class="credential">
-              Hospital privileges
-              <span class="credential__where">Sinai Hospital of Baltimore</span>
-            </li>
-            <li class="credential">
-              A Baltimore Magazine Top Dentist for many years running
-            </li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="surgeon" data-reveal>
-        <div class="surgeon__head">
-          <img class="surgeon__avatar" src="img/dr-charnowitz.webp"
-               width="360" height="360" loading="lazy" decoding="async"
-               alt="Dr. Neil Charnowitz, oral and maxillofacial surgeon.">
-          <div>
-            <h3 class="surgeon__name">Neil Charnowitz, DDS</h3>
-            <p class="surgeon__role">Oral &amp; maxillofacial surgeon</p>
-          </div>
-        </div>
-
-        <div class="surgeon__bio">
-          <p>
-            Dr. Charnowitz studied biology at Yeshiva University and took his dental degree at the
-            University of Maryland School of Dentistry, where he was inducted into several honor
-            societies. He completed his residency in oral and maxillofacial surgery at Broward Health
-            Medical Center in Fort Lauderdale, and served as chief resident in his final year.
-          </p>
-          <p>
-            His scope covers wisdom tooth removal, implant placement, bone grafting and sinus
-            augmentation, surgical extractions, oral pathology, facial trauma, corrective jaw surgery
-            and office anesthesia. Outside it he plays volleyball and pickleball, swims, and is married
-            to Gabby, with whom he has four children. His neckties are a matter of record.
-          </p>
-
-          <ul class="credentials">
-            <li class="credential">
-              Board certified in oral and maxillofacial surgery
-            </li>
-            <li class="credential">
-              Dean&rsquo;s Faculty
-              <span class="credential__where">University of Maryland School of Dentistry</span>
-            </li>
-            <li class="credential">
-              On-call attending
-              <span class="credential__where">Sinai Hospital, LifeBridge Health</span>
-            </li>
-            <li class="credential">
-              On-call attending
-              <span class="credential__where">Johns Hopkins Howard County Medical Center</span>
-            </li>
-          </ul>
-        </div>
-      </article>
-
-    </div>
-
-    <div class="affiliations" data-reveal>
-      <p class="affiliations__label">Both surgeons hold membership in</p>
-      <ul class="affiliations__list">
-        <li><img src="img/aaoms.webp" width="400" height="143" loading="lazy" decoding="async"
-                 alt="American Association of Oral and Maxillofacial Surgeons"></li>
-        <li><img src="img/ada.webp" width="400" height="147" loading="lazy" decoding="async"
-                 alt="American Dental Association"></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ============ COMFORT ============ -->
-<section class="section band-dark comfort panel-lift" id="comfort">
-  <span class="seam-mark" aria-hidden="true"><svg viewBox="11.994 0 47.016 44.142" fill="none" aria-hidden="true"><path d="M34.985 25.806 L11.994 0 L11.994 16.072 L34.691 43.632 C35.111 44.142 35.893 44.142 36.313 43.632 L59.01 16.072 L59.01 0 L36.019 25.806 C35.744 26.115 35.26 26.115 34.985 25.806 Z" fill="currentColor"/></svg></span>
-  <div class="shell">
-    <div class="section-head" data-reveal>
-      <h2 class="heading-1">Your anesthesia</h2>
-      <p class="lead">
-        Your surgeon selects the anesthetic to suit you and the procedure. Dr. Awalt serves as an Anesthesia Evaluator for the Maryland State Board of Dental Examiners and inspects other practices on the state's behalf.
-      </p>
-    </div>
-
-    <div class="comfort__grid">
-      <article class="comfort__card" data-reveal>
-        <h3>Local anesthetic</h3>
-        <p>We numb the area. You stay fully awake, and you drive yourself home afterward.</p>
-      </article>
-      <article class="comfort__card" data-reveal>
-        <h3>Oral conscious sedation</h3>
-        <p>You take medication before the appointment. It leaves you calm and drowsy, awake enough to respond, and you will remember little of the visit.</p>
-      </article>
-      <article class="comfort__card" data-reveal>
-        <h3>General anesthesia</h3>
-        <p>Your surgeon administers it here in the office and you sleep through the procedure. Plan for a pre-operative consultation, nothing by mouth after midnight, and an adult to drive you home.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
 <!-- ============ TESTIMONIALS ============ -->
 <section class="section" id="reviews">
   <div class="shell">
@@ -538,7 +259,6 @@
     </div>
   </div>
 </section>
-
 <!-- ============ BANNER STRIP ============ -->
 <section class="strip" aria-hidden="false">
   <figure class="strip__figure" data-reveal>
@@ -547,239 +267,20 @@
          alt="A patient in the chair during a consultation.">
   </figure>
 </section>
-
-<!-- ============ FIRST VISIT ============ -->
-<section class="section band-tint" id="visit">
-  <div class="shell">
-    <div class="section-head" data-reveal>
-      <h2 class="heading-1">Before you come in</h2>
-      <p class="lead">
-        You will complete paperwork, your surgeon will examine you and take films if they are needed, and you will leave with a plan. Sometimes we operate the same day.
-      </p>
-    </div>
-
-    <div class="logistics__grid">
-      <div class="logistics__col" data-reveal>
-        <h3>Bring with you</h3>
-        <ul class="checklist">
-          <li>Your referral slip and any films your dentist took</li>
-          <li>A list of your medications, with your physician&rsquo;s name and number</li>
-          <li>Your completed insurance forms, so the claim is not delayed</li>
-          <li>A parent or guardian, if the patient is under 18</li>
-        </ul>
-      </div>
-
-      <div class="logistics__col" data-reveal>
-        <h3>Tell us about</h3>
-        <ul class="checklist">
-          <li>Pregnancy, and any chronic or recent illness</li>
-          <li>Heart valves, joint replacements or other implanted devices</li>
-          <li>Any difficulty with anesthesia in the past</li>
-        </ul>
-      </div>
-
-      <div class="logistics__col" data-reveal>
-        <h3>Fees and insurance</h3>
-        <ul class="checklist">
-          <li>Credit cards, CareCredit, cash and personal checks</li>
-          <li>The front desk handles insurance and billing, and bilingual staff are available</li>
-          <li>Ground floor, parking outside the door, and reachable by public transit</li>
-        </ul>
-      </div>
-    </div>
+<!-- ============ CTA ============ -->
+<section class="section" id="cta">
+  <div class="shell cta-centered" data-reveal>
+    <h2 class="heading-1">Ready to schedule?</h2>
+    <p class="lead">Send your details and the front desk will call you back to book a time.</p>
+    <a class="btn" href="/contact">
+      Request an appointment
+      <span class="btn__mark" aria-hidden="true">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 13 13 3M6 3h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section class="section faq band-deep" id="faq">
-  <div class="shell">
-    <div class="section-head" data-reveal>
-      <h2 class="heading-1">Questions people ask first</h2>
-      <p class="lead">If yours is not here, the front desk will answer it on the phone.</p>
-    </div>
-
-    <div class="faq__list" data-reveal>
-      <details class="qa">
-        <summary class="qa__q">Do I need a referral?</summary>
-        <div class="qa__a"><p>Most patients come to us from their dentist or orthodontist. Bring the referral slip and any films. You are welcome to call without one.</p></div>
-      </details>
-
-      <details class="qa">
-        <summary class="qa__q">Will it hurt?</summary>
-        <div class="qa__a"><p>Not during. We perform every procedure under anesthesia, and you choose the depth with your surgeon: local only, oral sedation, or fully asleep. You go home with written instructions and a number to call.</p></div>
-      </details>
-
-      <details class="qa">
-        <summary class="qa__q">What will it cost?</summary>
-        <div class="qa__a"><p>The figure depends on the procedure and your coverage, so we give it to you at the consultation. The front desk handles insurance and billing and goes through the cost with you before we schedule anything.</p></div>
-      </details>
-
-      <details class="qa">
-        <summary class="qa__q">How can I pay?</summary>
-        <div class="qa__a"><p>We accept credit cards, CareCredit, cash and personal checks. CareCredit lets you spread the cost over instalments.</p></div>
-      </details>
-
-      <details class="qa">
-        <summary class="qa__q">Can I drive myself home?</summary>
-        <div class="qa__a"><p>After local anesthetic, yes. After oral sedation or a general anesthetic, no: bring an adult who can stay during surgery and drive you home.</p></div>
-      </details>
-
-      <details class="qa">
-        <summary class="qa__q">How soon can I be seen?</summary>
-        <div class="qa__a"><p>Call and tell the front desk what is happening. We treat infection, swelling, broken teeth and post-operative problems as emergencies.</p></div>
-      </details>
-
-      <details class="qa">
-        <summary class="qa__q">Do you treat children and teenagers?</summary>
-        <div class="qa__a"><p>Yes. We remove wisdom teeth and perform exposure and bonding for teenagers regularly. Bring a parent or guardian for anyone under 18.</p></div>
-      </details>
-
-      <details class="qa">
-        <summary class="qa__q">What do I bring to the first visit?</summary>
-        <div class="qa__a"><p>Your referral slip and any films, a list of your medications with your physician&rsquo;s name and number, and your completed insurance forms. Mention pregnancy, chronic or recent illness, heart valves, joint replacements, and any past difficulty with anesthesia.</p></div>
-      </details>
-
-      <details class="qa">
-        <summary class="qa__q">Where are you, and is there parking?</summary>
-        <div class="qa__a"><p>2 Reservoir Circle, Suite 103, Pikesville, MD 21208. We are on the ground floor. Parking is outside the door, and public transit reaches us.</p></div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- ============ AREA ============ -->
-<section class="area">
-  <div class="shell">
-    <div class="area__inner" data-reveal>
-      <img class="area__img" src="img/baltimore.webp"
-           srcset="img/baltimore-sm.webp 760w, img/baltimore.webp 1500w"
-           sizes="(max-width: 60rem) 100vw, 50vw"
-           width="1500" height="844" loading="lazy" decoding="async"
-           alt="The Baltimore Inner Harbour skyline.">
-      <div class="area__copy">
-        <h2 class="heading-2">Referrals from across greater Baltimore</h2>
-        <p>
-          Patients travel to Pikesville from across the metropolitan area, sent by their
-          general dentists and orthodontists. Both surgeons hold hospital appointments in
-          the city, so a complex case need not change hands.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ REQUEST ============ -->
-<section class="section" id="request">
-  <div class="shell request__grid">
-
-    <div class="contact-block" data-reveal>
-      <div class="section-head" style="margin-bottom:0">
-        <h2 class="heading-1">Request an appointment</h2>
-        <p class="lead">Send your details and the front desk will call you to book a time. If you are in pain, call the office.</p>
-      </div>
-
-      <a class="badge-circle" href="#requestForm">
-        <svg class="badge-circle__ring" viewBox="0 0 100 100" aria-hidden="true">
-          <defs><path id="badgeArc" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"/></defs>
-          <text><textPath href="#badgeArc" startOffset="0" textLength="232" lengthAdjust="spacing">Request an appointment &#183;</textPath></text>
-        </svg>
-        <svg class="badge-circle__arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M3 13 13 3M6 3h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span class="sr-only">Jump to the appointment request form</span>
-      </a>
-
-      <div class="contact-item">
-        <span class="label">Phone</span>
-        <a class="contact-item__value" href="tel:+14105819008">(410) 581-9008</a>
-      </div>
-
-      <div class="contact-item">
-        <span class="label">Office</span>
-        <address class="contact-item__value">
-          2 Reservoir Circle, Suite 103<br>
-          Pikesville, MD 21208
-        </address>
-      </div>
-
-      <div class="contact-item">
-        <span class="label">Hours</span>
-        <p class="contact-item__value">Monday to Friday<br>8:00 am to 4:00 pm</p>
-      </div>
-    </div>
-
-    <div class="enclosure" data-reveal>
-      <div class="enclosure__core">
-        <form class="form" id="requestForm" novalidate>
-
-          <div class="field field--pair">
-            <div class="field" data-field>
-              <label class="field__label" for="firstName">First name</label>
-              <input class="input" id="firstName" name="firstName" type="text" autocomplete="given-name" required>
-              <p class="field__error" data-error>Please enter your first name.</p>
-            </div>
-            <div class="field" data-field>
-              <label class="field__label" for="lastName">Last name</label>
-              <input class="input" id="lastName" name="lastName" type="text" autocomplete="family-name" required>
-              <p class="field__error" data-error>Please enter your last name.</p>
-            </div>
-          </div>
-
-          <div class="field field--pair">
-            <div class="field" data-field>
-              <label class="field__label" for="phone">Phone</label>
-              <input class="input" id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required>
-              <p class="field__error" data-error>Please enter a phone number we can reach you on.</p>
-            </div>
-            <div class="field" data-field>
-              <label class="field__label" for="email">Email</label>
-              <input class="input" id="email" name="email" type="email" autocomplete="email" required>
-              <p class="field__error" data-error>Please enter a valid email address.</p>
-            </div>
-          </div>
-
-          <div class="field" data-field>
-            <label class="field__label" for="reason">What brings you in</label>
-            <select class="input" id="reason" name="reason" required>
-              <option value="">Choose one</option>
-              <option>Wisdom teeth</option>
-              <option>Extraction</option>
-              <option>Dental implant</option>
-              <option>Bone graft or sinus lift</option>
-              <option>Tooth pain or infection</option>
-              <option>A sore or lump that has not healed</option>
-              <option>Second opinion</option>
-              <option>Something else</option>
-            </select>
-            <p class="field__error" data-error>Please choose a reason so we can book the right amount of time.</p>
-          </div>
-
-          <div class="field" data-field>
-            <label class="field__label" for="notes">
-              Anything we should know <span class="field__optional">(optional)</span>
-            </label>
-            <textarea class="input" id="notes" name="notes" rows="4" placeholder="Referring dentist, when you are free, how long this has been going on."></textarea>
-          </div>
-
-          <p class="form__consent">
-            Please keep detailed medical information off this form. We will take the rest of your history by phone.
-          </p>
-
-          <button class="btn" type="submit" id="submitBtn">
-            <span data-submit-label>Send the request</span>
-            <span class="btn__mark" aria-hidden="true">
-              <svg viewBox="0 0 16 16" fill="none"><path d="M3 13 13 3M6 3h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-          </button>
-
-          <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
-
-        </form>
-      </div>
-    </div>
-
-  </div>
-</section>
 
 </main>
 
@@ -835,13 +336,12 @@
       </div>
 
       <div class="footer__col">
-        <h3>On this page</h3>
-        <a href="#services">Services</a>
-        <a href="#surgeons">Surgeons</a>
-        <a href="#comfort">Anesthesia</a>
-        <a href="#visit">First visit</a>
-        <a href="#faq">FAQ</a>
-        <a href="#request">Request an appointment</a>
+        <h3>Explore</h3>
+        <a href="/services">Services</a>
+        <a href="/surgeons">Surgeons</a>
+        <a href="/patient-info">Patient info</a>
+        <a href="/faq">FAQ</a>
+        <a href="/contact">Contact</a>
       </div>
     </div>
 
@@ -900,87 +400,6 @@
     { "@type": "MedicalProcedure", "name": "Oral conscious sedation" },
     { "@type": "MedicalProcedure", "name": "General anesthesia" },
     { "@type": "MedicalProcedure", "name": "Emergency oral surgery" }
-  ]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Do I need a referral?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Most patients come to us from their dentist or orthodontist. Bring the referral slip and any films. You are welcome to call without one."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Will it hurt?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Not during. We perform every procedure under anesthesia, and you choose the depth with your surgeon: local only, oral sedation, or fully asleep. You go home with written instructions and a number to call."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What will it cost?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The figure depends on the procedure and your coverage, so we give it to you at the consultation. The front desk handles insurance and billing and goes through the cost with you before we schedule anything."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How can I pay?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We accept credit cards, CareCredit, cash and personal checks. CareCredit lets you spread the cost over instalments."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I drive myself home?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "After local anesthetic, yes. After oral sedation or a general anesthetic, no: bring an adult who can stay during surgery and drive you home."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How soon can I be seen?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Call and tell the front desk what is happening. We treat infection, swelling, broken teeth and post-operative problems as emergencies."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you treat children and teenagers?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. We remove wisdom teeth and perform exposure and bonding for teenagers regularly. Bring a parent or guardian for anyone under 18."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What do I bring to the first visit?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Your referral slip and any films, a list of your medications with your physician’s name and number, and your completed insurance forms. Mention pregnancy, chronic or recent illness, heart valves, joint replacements, and any past difficulty with anesthesia."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Where are you, and is there parking?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "2 Reservoir Circle, Suite 103, Pikesville, MD 21208. We are on the ground floor. Parking is outside the door, and public transit reaches us."
-      }
-    }
   ]
 }
 </script>
