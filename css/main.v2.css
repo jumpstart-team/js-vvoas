@@ -515,7 +515,6 @@ body[data-nav-open="true"] { overflow: hidden; }
   display: grid;
   gap: var(--space-6);
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-self: center;
 }
 .hero__proof-item { display: grid; gap: var(--space-2); align-content: start; }
 .hero__proof-item:not(:first-child) { border-left: var(--rule-hairline); padding-left: var(--space-6); }
@@ -546,47 +545,6 @@ body[data-nav-open="true"] { overflow: hidden; }
   padding: clamp(var(--space-6), 3vw, var(--space-10));
   border-radius: calc(var(--radius-xl) - var(--space-2));
   background-color: var(--color-paper);
-}
-
-.booking { display: grid; gap: var(--space-6); }
-.booking__actions { display: grid; gap: var(--space-3); }
-.booking__actions .btn { justify-content: space-between; width: 100%; }
-
-/* One primary action per view. The phone stays one tap away but is
-   deliberately subordinate to the request button above it. */
-.booking__phone {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  align-self: center;
-  padding: var(--space-2) var(--space-3);
-  font-size: var(--text-base);
-  font-weight: 500;
-  color: var(--color-ink-secondary);
-  text-decoration: none;
-  border-radius: var(--radius-sm);
-  transition: color var(--dur-fast) var(--ease-out);
-}
-.booking__phone svg { width: 0.9375rem; height: 0.9375rem; flex: none; }
-.booking__phone:hover { color: var(--color-accent); }
-
-.booking__hours { display: grid; gap: var(--space-2); }
-.booking__hours-row {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--space-4);
-  font-size: var(--text-base);
-}
-.booking__hours-row dt { color: var(--color-ink-muted); }
-.booking__hours-row dd { color: var(--color-ink); font-weight: 500; }
-
-.booking__note {
-  padding: var(--space-4) var(--space-5);
-  border-radius: var(--radius-md);
-  background-color: var(--color-accent-soft);
-  color: var(--color-accent-deep);
-  font-size: var(--text-sm);
-  line-height: 1.5;
 }
 
 /* ============================================================
@@ -665,6 +623,12 @@ body[data-nav-open="true"] { overflow: hidden; }
    short of the 4.5:1 body-text floor against the same worst-case pixel. */
 .hero-full__phone:hover { color: var(--color-ink-inverse); }
 
+.hero-full__hours {
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-ink-inverse-muted);
+}
+
 /* On a narrow screen the photograph cannot carry text beside it, so it
    becomes a band above and the copy sits on solid ground below. */
 @media (max-width: 52rem) {
@@ -699,7 +663,8 @@ body[data-nav-open="true"] { overflow: hidden; }
      reads in the normal dark-on-light palette, not the light-on-photo one. */
   .hero-full::after { display: none; }
   .hero-full .marker,
-  .hero-full__phone { color: var(--color-ink-muted); }
+  .hero-full__phone,
+  .hero-full__hours { color: var(--color-ink-muted); }
   .hero-full__display { color: var(--color-ink); }
   .hero-full__lead { color: var(--color-ink-secondary); }
   .hero-full__phone:hover { color: var(--color-accent); }
@@ -710,15 +675,6 @@ body[data-nav-open="true"] { overflow: hidden; }
    ============================================================ */
 
 .bookbar { padding-top: var(--space-block); }
-.bookbar__grid {
-  display: grid;
-  gap: clamp(var(--space-10), 5vw, var(--space-16));
-  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-  align-items: start;
-}
-@media (max-width: 60rem) {
-  .bookbar__grid { grid-template-columns: minmax(0, 1fr); }
-}
 
 /* ============================================================
    7 · URGENT BAND — the fastest path for someone in pain
@@ -782,6 +738,11 @@ body[data-nav-open="true"] { overflow: hidden; }
   transition: transform var(--dur-slow) var(--ease-out);
 }
 .service:hover .service__media img { transform: scale(1.04); }
+/* A real photo hasn't been supplied yet for this procedure - a neutral
+   placeholder box with the line-icon language used elsewhere on the
+   site, rather than a stock photo that doesn't show the real practice. */
+.service__media--icon { display: grid; place-items: center; }
+.service__media--icon svg { width: 2.25rem; height: 2.25rem; color: var(--color-accent); opacity: 0.7; }
 .service__name { font-size: var(--text-lg); font-family: var(--font-display); color: var(--color-ink); }
 .service__desc { font-size: var(--text-base); line-height: 1.5; color: var(--color-ink-secondary); }
 
@@ -1707,10 +1668,6 @@ a.contact-item__value:hover { color: var(--color-accent); }
   /* Nothing on a phone drops below 16px, labels and meta included */
   :root { --text-sm: 1rem; }
   body { font-size: 1rem; }
-  /* dt and dd would otherwise sit side by side and force the card wider
-     than the viewport */
-  .booking__hours-row { display: grid; gap: 0; }
-  .booking__hours-row dd { font-size: var(--text-md); }
 }
 
 /* Very narrow phones (320px class). Trims the chrome so that no button
