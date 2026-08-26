@@ -824,6 +824,10 @@ body[data-nav-open="true"] { overflow: hidden; }
 }
 .surgeon__bio { display: grid; gap: var(--space-4); }
 
+.legal { max-width: var(--measure); display: grid; gap: var(--space-3); }
+.legal h3 { font-size: var(--text-lg); margin-top: var(--space-8); }
+.legal p { font-size: var(--text-base); line-height: 1.6; color: var(--color-ink-secondary); }
+
 .credentials { display: grid; gap: var(--space-3); margin-top: var(--space-2); }
 .credential {
   display: grid;
@@ -881,6 +885,17 @@ body[data-nav-open="true"] { overflow: hidden; }
   gap: var(--space-8);
   margin-bottom: var(--space-10);
 }
+
+.reviews__badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: var(--space-3) 0 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-ink-secondary);
+}
+.reviews__badge svg { width: 1rem; height: 1rem; flex: none; color: var(--color-accent); }
 
 .quotes__controls { display: flex; gap: var(--space-3); flex: none; }
 
@@ -1153,6 +1168,9 @@ a.contact-item__value:hover { color: var(--color-accent); }
   display: grid;
   gap: var(--space-2);
 }
+/* The muted copy color falls short of link-contrast; a footer link
+   still needs to read as one. */
+.footer__base a { color: var(--color-ink-inverse); text-decoration: underline; }
 
 /* ============================================================
    14b · IMAGERY
