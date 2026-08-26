@@ -694,13 +694,15 @@ body[data-nav-open="true"] { overflow: hidden; }
   justify-content: space-between;
   padding: clamp(var(--space-8), 4vw, var(--space-12));
   border-radius: var(--radius-lg);
-  background-color: var(--color-canvas);
-  color: var(--color-ink-inverse-muted);
+  background-color: var(--color-paper-raised);
+  box-shadow: var(--elev-raised);
+  transition: box-shadow var(--dur-mid) var(--ease-out);
 }
+.urgent__inner:hover { box-shadow: var(--elev-hover); }
 .urgent__copy { display: grid; gap: var(--space-3); max-width: var(--measure-tight); }
-.urgent__copy h2 { color: var(--color-ink-inverse); font-size: var(--text-xl); }
+.urgent__copy h2 { font-size: var(--text-xl); }
 
-/* Same band shape as .urgent, on a light ground: a general "see
+/* Same band shape as .urgent, on a dark ground: a general "see
    everything we do" pointer rather than the acute-care callout. */
 .promo { padding-bottom: var(--space-section); }
 .promo__inner {
@@ -711,13 +713,11 @@ body[data-nav-open="true"] { overflow: hidden; }
   justify-content: space-between;
   padding: clamp(var(--space-8), 4vw, var(--space-12));
   border-radius: var(--radius-lg);
-  background-color: var(--color-paper-raised);
-  box-shadow: var(--elev-raised);
-  transition: box-shadow var(--dur-mid) var(--ease-out);
+  background-color: var(--color-canvas);
+  color: var(--color-ink-inverse-muted);
 }
-.promo__inner:hover { box-shadow: var(--elev-hover); }
 .promo__copy { display: grid; gap: var(--space-3); max-width: var(--measure-tight); }
-.promo__copy h2 { font-size: var(--text-xl); }
+.promo__copy h2 { color: var(--color-ink-inverse); font-size: var(--text-xl); }
 
 /* ============================================================
    8 · SERVICES — grouped by what the patient came in for
