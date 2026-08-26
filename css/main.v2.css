@@ -488,6 +488,10 @@ summary:focus-visible {
   color: var(--color-ink);
   text-decoration: none;
   line-height: 1.14;
+  /* The line-height box alone falls short of a 44px tap target -
+     padding extends the hit area without changing how it looks. */
+  padding-block: var(--space-2);
+  margin-block: calc(var(--space-2) * -1);
   opacity: 0;
   transform: translateY(1.5rem);
   transition:
