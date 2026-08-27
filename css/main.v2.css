@@ -723,7 +723,10 @@ body[data-nav-open="true"] { overflow: hidden; }
   border-radius: var(--radius-lg);
   background-color: var(--color-canvas);
   color: var(--color-ink-inverse-muted);
+  box-shadow: var(--elev-raised-dark);
+  transition: box-shadow var(--dur-mid) var(--ease-out);
 }
+.promo__inner:hover { box-shadow: var(--elev-hover-dark); }
 .promo__copy { display: grid; gap: var(--space-3); max-width: var(--measure-tight); }
 .promo__copy h2 { color: var(--color-ink-inverse); font-size: var(--text-xl); }
 
