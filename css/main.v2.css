@@ -520,9 +520,17 @@ body[data-nav-open="true"] { overflow: hidden; }
   gap: var(--space-6);
   grid-template-columns: repeat(2, minmax(0, 1fr));
   max-width: 40rem;
+  margin-inline: auto;
+  text-align: center;
 }
-.hero__proof-item { display: grid; gap: var(--space-2); align-content: start; }
+.hero__proof-item { display: grid; gap: var(--space-2); justify-items: center; align-content: start; }
 .hero__proof-item:not(:first-child) { border-left: var(--rule-hairline); padding-left: var(--space-6); }
+.hero__proof-icon {
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: var(--space-1);
+  color: var(--color-accent);
+}
 .hero__proof-term {
   font-family: var(--font-display);
   font-size: var(--text-xl);
