@@ -809,8 +809,8 @@ body[data-nav-open="true"] { overflow: hidden; }
 }
 
 .surgeon__avatar {
-  width: 7.5rem;
-  height: 7.5rem;
+  width: 9rem;
+  height: 9rem;
   flex: none;
   border-radius: var(--radius-pill);
   object-fit: cover;
@@ -1707,7 +1707,7 @@ a.contact-item__value:hover { color: var(--color-accent); }
   .surgeon__head { gap: var(--space-4); }
   .qa__q { font-size: var(--text-base); padding: var(--space-4) var(--space-5); }
   .qa__a { padding: 0 var(--space-5) var(--space-5); }
-  .surgeon__avatar { width: 5.5rem; height: 5.5rem; }
+  .surgeon__avatar { width: 6.5rem; height: 6.5rem; }
   .urgent__inner,
   .promo__inner { flex-direction: column; align-items: stretch; }
   .urgent__inner .btn,
