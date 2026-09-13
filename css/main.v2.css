@@ -796,9 +796,9 @@ body[data-nav-open="true"] { overflow: hidden; }
 .surgeon { display: grid; gap: var(--space-6); align-content: start; }
 
 /* The surgeon photograph is a small square avatar rather than a large
-   portrait: the only real headshot the practice has is 500px wide, and a
-   tall frame would upscale it into mush. A modest avatar keeps it sharp
-   and lets the credentials carry the section. */
+   portrait: both headshots are cropped square at 360px, and a tall frame
+   would upscale them into mush. A modest avatar keeps them sharp and
+   lets the credentials carry the section. */
 .surgeon__head {
   display: flex;
   /* Top-aligned, not centred: one surgeon's name wraps to two lines and the
@@ -815,17 +815,6 @@ body[data-nav-open="true"] { overflow: hidden; }
   border-radius: var(--radius-pill);
   object-fit: cover;
   background-color: var(--color-paper-sunk);
-}
-
-.surgeon__avatar--placeholder {
-  display: grid;
-  place-items: center;
-  background-color: var(--color-paper-sunk);
-  box-shadow: inset 0 0 0 1px var(--color-paper-edge);
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  color: var(--color-ink-muted);
-  letter-spacing: 0.02em;
 }
 
 .surgeon__name { font-size: var(--text-xl); }
