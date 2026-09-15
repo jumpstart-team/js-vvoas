@@ -1782,11 +1782,25 @@ a.contact-item__value:hover { color: var(--color-accent); }
 @media print {
   .nav, .nav__overlay, .btn, .page-hero__media, .footer, #cta { display: none; }
   body { background: #fff; color: #000; }
-  .page-hero--photo { min-height: 0; padding-block: var(--space-6); background-color: #fff; }
+  .page-hero--photo { min-height: 0; padding-block: var(--space-2); background-color: #fff; }
   .page-hero--photo::after { display: none; }
   .page-hero--photo .label,
   .page-hero--photo h1,
   .page-hero--photo .lead { color: #000; }
+  .page-hero--photo .label { margin-bottom: var(--space-1); }
+  .page-hero--photo h1 { font-size: 1.5rem; }
+  .page-hero--photo .lead { margin-top: var(--space-2); font-size: var(--text-sm); max-width: none; }
+
+  /* Keep a printed checklist to one page: the on-screen section rhythm
+     (large section padding, roomy card padding, generous list gaps) is
+     tuned for scrolling a browser window, not for a fixed sheet of paper. */
+  .section { padding-block: var(--space-3); }
+  .logistics__grid { gap: var(--space-2); margin-top: var(--space-2); }
+  .logistics__col { padding: var(--space-3); gap: var(--space-2); box-shadow: none; }
+  .logistics__col h3 { font-size: var(--text-base); }
+  .checklist { gap: var(--space-1); }
+  .checklist li { padding-left: var(--space-6); font-size: var(--text-sm); line-height: 1.35; }
+  .checklist li::before { width: 0.875rem; height: 0.875rem; top: 0.1em; }
 }
 
 /* ============================================================
