@@ -231,6 +231,36 @@ summary:focus-visible {
 .page-hero h1 { margin: 0; }
 .page-hero .lead { margin-top: var(--space-4); }
 
+/* A handful of inner pages carry a real photo of the office instead of
+   the flat tint - same blur-and-veil treatment as the home page's
+   .hero-full, just shallower, since there's no large display heading
+   here to protect. */
+.page-hero--photo {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: clamp(16rem, calc(280 * var(--fluid)), 20rem);
+  background-color: var(--color-canvas);
+}
+.page-hero--photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--veil-hero);
+}
+.page-hero__media { position: absolute; inset: 0; z-index: -2; }
+.page-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(6px);
+  transform: scale(1.06);
+}
+.page-hero--photo .label { color: var(--color-ink-inverse-muted); }
+.page-hero--photo h1 { color: var(--color-ink-inverse); }
+.page-hero--photo .lead { color: var(--color-ink-inverse-muted); }
+
 .cta-centered {
   display: grid;
   justify-items: center;
