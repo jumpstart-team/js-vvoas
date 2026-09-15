@@ -1011,7 +1011,7 @@ body[data-nav-open="true"] { overflow: hidden; }
 .logistics__grid {
   display: grid;
   gap: var(--space-6);
-  grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
+  grid-template-columns: 1fr;
   margin-top: var(--space-12);
 }
 .logistics__col {
