@@ -277,4 +277,12 @@
   var year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
 
+  /* ==================================================================
+   * 6 · PRINT TRIGGERS
+   * ================================================================== */
+
+  document.querySelectorAll('[data-print]').forEach(function (btn) {
+    btn.addEventListener('click', function () { window.print(); });
+  });
+
 }());

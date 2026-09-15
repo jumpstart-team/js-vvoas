@@ -1008,11 +1008,12 @@ body[data-nav-open="true"] { overflow: hidden; }
    12 · LOGISTICS — removes the friction before the first visit
    ============================================================ */
 
+.logistics__actions { display: flex; justify-content: flex-end; }
 .logistics__grid {
   display: grid;
   gap: var(--space-6);
   grid-template-columns: 1fr;
-  margin-top: var(--space-12);
+  margin-top: var(--space-6);
 }
 .logistics__col {
   display: grid;
@@ -1030,7 +1031,7 @@ body[data-nav-open="true"] { overflow: hidden; }
 .checklist li {
   display: grid;
   gap: var(--space-1);
-  padding-left: var(--space-6);
+  padding-left: var(--space-8);
   position: relative;
   font-size: var(--text-base);
   line-height: 1.5;
@@ -1039,11 +1040,12 @@ body[data-nav-open="true"] { overflow: hidden; }
   content: "";
   position: absolute;
   left: 0;
-  top: 0.55em;
-  width: 0.5rem;
-  height: 0.5rem;
+  top: 0.15em;
+  width: 1.125rem;
+  height: 1.125rem;
   border: 1.5px solid var(--color-accent);
-  border-radius: var(--radius-sm);
+  border-radius: 0.25rem;
+  background-color: var(--color-paper);
 }
 
 /* ============================================================
@@ -1778,8 +1780,13 @@ a.contact-item__value:hover { color: var(--color-accent); }
 }
 
 @media print {
-  .nav, .nav__overlay, .btn { display: none; }
+  .nav, .nav__overlay, .btn, .page-hero__media, .footer, #cta { display: none; }
   body { background: #fff; color: #000; }
+  .page-hero--photo { min-height: 0; padding-block: var(--space-6); background-color: #fff; }
+  .page-hero--photo::after { display: none; }
+  .page-hero--photo .label,
+  .page-hero--photo h1,
+  .page-hero--photo .lead { color: #000; }
 }
 
 /* ============================================================
